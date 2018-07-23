@@ -16,13 +16,13 @@ public class Telas extends JPanel{
     	{1,1,1,1,1,1,1,1,1,1,1},
 	};
 
-	int ghost_y = 10;
-	int ghost_x = 10;
+	int ghost_y = 3;
+	int ghost_x = 4;
 
 	int pacman_y = 6;
 	int pacman_x = 6;
 
-	String dir = "l";
+	String dir = "d";
 
 	@Override
 	public void paintComponent(Graphics g){
@@ -49,49 +49,69 @@ public class Telas extends JPanel{
 	}
 
 	public void updateGhost(){		
-		if(ghost_x > 0)
-			ghost_x=ghost_x-1;
+		if(ghost_x > 0){
+			if(mapa[ghost_x+1][ghost_y] != 1){
+				ghost_x = ghost_x+1;
+				mapa[ghost_x-1][ghost_y] = 0;
+			}
 
-		System.out.println(ghost_x);
+			else if(mapa[ghost_x-1][ghost_y] != 1){
+				ghost_x=ghost_x-1;
+				mapa[ghost_x+1][ghost_y] = 0;
+			}
+
+			else if(mapa[ghost_x][ghost_y+1] != 1){
+				ghost_y=ghost_y+1;
+				mapa[ghost_x][ghost_y-1] = 0;
+			}
+
+			else if(mapa[ghost_x][ghost_y-1] != 1){
+				ghost_y=ghost_y-1;
+				mapa[ghost_x][ghost_y+1] = 0;
+			}
+
+
+		}
 
 		this.mapa[ghost_x][ghost_y] = 8;
 	}
 
 	public void updatePacMan(){		
 		if(dir == "d"){
-			if(mapa[pacman_x+1][pacman_y] != 1)
+			//Move o PacMan pra direita
+			if(mapa[pacman_x+1][pacman_y] != 1){
 				pacman_x++;
-			else
+				mapa[pacman_x-1][pacman_y] = 0;
+			} else
 				dir = "b";
-
-		} else if(dir == "e") {
-			if(mapa[pacman_x-1][pacman_y] != 1)
+		} else if(dir == "e") { 
+			//Move o PacMan pra esquerda
+			if(mapa[pacman_x-1][pacman_y] != 1){
 				pacman_x--;
+				mapa[pacman_x+1][pacman_y] = 0;
+			}
 			else
 				dir = "c";	
-			System.out.println("e");
-
-		}else if(dir == "c"){
-			if(mapa[pacman_x][pacman_y-1] != 1)
+		} else if(dir == "c"){
+			//Move o PacMan pra cima
+			if(mapa[pacman_x][pacman_y-1] != 1){
 				pacman_y--;
+				mapa[pacman_x][pacman_y+1] = 0;
+			}
 			else
 				dir = "l";
-			System.out.println("c");
-
-			
-		}else if(dir == "b"){
-			if(mapa[pacman_x][pacman_y+1] != 1)
+		} else if(dir == "b"){
+			//Move o PacMan pra baixo
+			if(mapa[pacman_x][pacman_y+1] != 1){
 				pacman_y++;
+				mapa[pacman_x][pacman_y-1] = 0;
+			}
 			else
-				dir = "d";
-			System.out.println("b");
+				dir = "e";
 
 		}
-
-		System.out.println(ghost_x);
-
-		this.mapa[pacman_x][pacman_y] = 2;
-		this.mapa[pacman_x-1][pacman_y] = 0;
+		
+		this.mapa[pacman_x][pacman_y] = 2;		
 	}
 }
 
