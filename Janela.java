@@ -4,7 +4,7 @@ public class Janela{
 	JFrame janela = new JFrame();
 
 	public void criarJanela(){
-		this.janela.setBounds(0,0,550,585);
+		this.janela.setBounds(0,0,850,885);
 		this.janela.setTitle("PACMAN");
 		this.janela.setResizable(false);
 		this.janela.setVisible(true);
