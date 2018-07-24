@@ -1,8 +1,44 @@
 public class Fantasma{
-	String direcao = "d";
+	private String direcao;
 
-	int x = 5;
-	int y = 5;
+	private int x = 5;
+	private int y = 5;
 
-	int ultimo_item = 0;
+	private int ultimo_item = 0;
+
+	public Fantasma(){
+		setDirecao("c");
+	}
+
+	public void setDirecao(String direcao){
+		this.direcao = direcao;
+	}
+
+	public void setX(int x){
+		this.x = x;
+	}
+
+	public void setY(int y){
+		this.y = y;
+	}
+
+	public void setUltimoItem(int ultimo_item){
+		this.ultimo_item = ultimo_item;
+	}
+
+	public String getDirecao(){
+		return this.direcao;
+	}
+
+	public int getX(){
+		return this.x;
+	}
+
+	public int getY(){
+		return this.y;
+	}
+
+	public int getUltimoItem(){
+		return this.ultimo_item;
+	}
 }

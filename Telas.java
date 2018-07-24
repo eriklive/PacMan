@@ -50,21 +50,21 @@ public class Telas extends JPanel{
 	}
 
 	public void updateGhost(){	
-		switch(fantasma.direcao){
+		switch( fantasma.getDirecao() ){
 			case "d":
-				Movimentos.moverFantasmaX(fantasma, fantasma.x+1);
+				Movimentos.moverFantasmaX(fantasma, fantasma.getX() + 1);
 				break;
 	
 			case "e":
-				Movimentos.moverFantasmaX(fantasma, fantasma.x-1);
+				Movimentos.moverFantasmaX(fantasma, fantasma.getX() - 1);
 				break;
 	
 			case "b":
-				Movimentos.moverFantasmaY(fantasma, fantasma.y+1);
+				Movimentos.moverFantasmaY(fantasma, fantasma.getY() + 1);
 				break;
 	
 			case "c":
-				Movimentos.moverFantasmaY(fantasma, fantasma.y-1);		
+				Movimentos.moverFantasmaY(fantasma, fantasma.getY() - 1);		
 				break;
 		}
 	}
