@@ -1,66 +1,74 @@
 import java.awt.*;
 
 public class DesenharFormas{
+    private static int square = 25;
+    private static int coin = 10;
+    private static int padding = (square - coin) / 2;
+
+
 	//Desenha um bloco de 50x50px
 	public static void drawParede(Graphics g, int x, int y) {
-		x = x*50;
-		y = y*50;
+        //x é a posição "x" da matriz. Como o tamanho de cada bloco é 'square', então a distância
+        //deste novo elemento da esquerda será 'square'*'posição dele da matriz'
+
+		x = x*square;
+		y = y*square;
 
         g.setColor(Color.BLUE);
-        g.drawRect(x,y,50,50);
-        g.fillRect(x,y,50,50);
+        g.drawRect(x,y,square,square);
+        g.fillRect(x,y,square,square);
     }
 
-	//Desenha um bloco de 50x50px preto
+	//Desenha um bloco de squarexsquarepx preto
     public static void drawNada(Graphics g, int x, int y) {
-    	x = x*50;
-		y = y*50;
+    	x = x*square;
+		y = y*square;
 
         g.setColor(Color.BLACK);
-        g.drawRect(x,y,50,50);
-        g.fillRect(x,y,50,50);
+        g.drawRect(x,y,square,square);
+        g.fillRect(x,y,square,square);
     }
 
-	//Desenha um cícurlo de 50x50px com fundo preto (vulgo PacMan)
+	//Desenha um cícurlo de squarexsquarepx com fundo preto (vulgo PacMan)
     public static void drawPacMan(Graphics g, int x, int y) {
-    	x = x*50;
-		y = y*50;
+    	x = x*square;
+		y = y*square;
 		g.setColor(Color.BLACK);
-        g.drawRect(x,y,50,50);
-        g.fillRect(x,y,50,50);
+        g.drawRect(x,y,square,square);
+        g.fillRect(x,y,square,square);
         g.setColor(Color.YELLOW);
-        g.drawOval(x,y,50,50);
-        g.fillOval(x,y,50,50);
+        g.drawOval(x,y,square,square);
+        g.fillOval(x,y,square,square);
     }
 
-	//Desenha um cícurlo de roxo 50x50px com fundo preto (vulgo PacMan)
+	//Desenha um cícurlo de roxo squarexsquarepx com fundo preto (vulgo PacMan)
     public static void drawGhost(Graphics g, int x, int y) {
-    	x = x*50;
-		y = y*50;
+    	x = x*square;
+		y = y*square;
 
 		//background
 		g.setColor(Color.BLACK);
-        g.drawRect(x,y,50,50);
-        g.fillRect(x,y,50,50);
+        g.drawRect(x,y,square,square);
+        g.fillRect(x,y,square,square);
 
         //Ghost
         g.setColor(Color.MAGENTA);
-        g.drawOval(x,y,50,50);
-        g.fillOval(x,y,50,50);
+        g.drawOval(x,y,square,square);
+        g.fillOval(x,y,square,square);
     }
 
 	//Desenha um cícurlo de 20x20px com fundo preto (moedas)
     public static void drawCoin(Graphics g, int x, int y) {
-    	x = x*50;
-		y = y*50;
+    	x = x*square;
+		y = y*square;
 		g.setColor(Color.BLACK);
-        g.drawRect(x,y,50,50);
-        g.fillRect(x,y,50,50);
+        g.drawRect(x,y,square,square);
+        g.fillRect(x,y,square,square);
 
-        x+=15;
-        y+=15;
+        x+=padding;
+        y+=padding;
         g.setColor(Color.YELLOW);
-        g.drawOval(x,y,20,20);
-        g.fillOval(x,y,20,20);
+        g.drawOval(x,y,coin,coin);
+        g.fillOval(x,y,coin,coin);
     }
 }
