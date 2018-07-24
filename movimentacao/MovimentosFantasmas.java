@@ -1,4 +1,7 @@
-public class Movimentos {
+package movimentacao;
+import personagens.*;
+
+public class MovimentosFantasmas {
 
 	public static void moverFantasmaX(Fantasma fantasma, int novo_x){
 		int x = fantasma.getX();

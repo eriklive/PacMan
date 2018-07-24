@@ -1,8 +1,11 @@
 import javax.swing.JPanel;
 import java.awt.*;
+import personagens.*;
+import movimentacao.*;
 
 public class Telas extends JPanel{
 	Fantasma fantasma = new Fantasma();
+	PacMan pacman = new PacMan();
 
 	public static int[][] mapa = new int[][]{
     	{1,1,1,1,1,1,1,1,1,1,1},
@@ -17,13 +20,6 @@ public class Telas extends JPanel{
     	{1,3,3,3,3,1,3,3,3,3,1},
     	{1,1,1,1,1,1,1,1,1,1,1},
 	};
-
-	int[] posicao_pacman = new int[]{5,3};
-
-	int pacman_x = 5;
-	int pacman_y = 5;
-
-	String pac_dir = "d";
 
 	@Override
 	public void paintComponent(Graphics g){
@@ -52,60 +48,41 @@ public class Telas extends JPanel{
 	public void updateGhost(){	
 		switch( fantasma.getDirecao() ){
 			case "d":
-				Movimentos.moverFantasmaX(fantasma, fantasma.getX() + 1);
+				MovimentosFantasmas.moverFantasmaX(fantasma, fantasma.getX() + 1);
 				break;
 	
 			case "e":
-				Movimentos.moverFantasmaX(fantasma, fantasma.getX() - 1);
+				MovimentosFantasmas.moverFantasmaX(fantasma, fantasma.getX() - 1);
 				break;
 	
 			case "b":
-				Movimentos.moverFantasmaY(fantasma, fantasma.getY() + 1);
+				MovimentosFantasmas.moverFantasmaY(fantasma, fantasma.getY() + 1);
 				break;
 	
 			case "c":
-				Movimentos.moverFantasmaY(fantasma, fantasma.getY() - 1);		
+				MovimentosFantasmas.moverFantasmaY(fantasma, fantasma.getY() - 1);		
 				break;
 		}
 	}
 
+	public void updatePacMan(){	
+		switch( pacman.getDirecao() ){
+			case "d":
+				MovimentosPacMan.moverPacManX(pacman, pacman.getX() + 1);
+				break;
 	
-
-	public void updatePacMan(){		
-		if(pac_dir == "d"){
-			//Move o PacMan pra direita
-			if(mapa[pacman_x+1][pacman_y] != 1){
-				pacman_x++;
-				mapa[pacman_x-1][pacman_y] = 0;
-			} else
-				pac_dir = "b";
-		} else if(pac_dir == "e") { 
-			//Move o PacMan pra esquerda
-			if(mapa[pacman_x-1][pacman_y] != 1){
-				pacman_x--;
-				mapa[pacman_x+1][pacman_y] = 0;
-			}
-			else
-				pac_dir = "c";	
-		} else if(pac_dir == "c"){
-			//Move o PacMan pra cima
-			if(mapa[pacman_x][pacman_y-1] != 1){
-				pacman_y--;
-				mapa[pacman_x][pacman_y+1] = 0;
-			}
-			else
-				pac_dir = "l";
-		} else if(pac_dir == "b"){
-			//Move o PacMan pra baixo
-			if(mapa[pacman_x][pacman_y+1] != 1){
-				pacman_y++;
-				mapa[pacman_x][pacman_y-1] = 0;
-			}
-			else
-				pac_dir = "e";
+			case "e":
+				MovimentosPacMan.moverPacManX(pacman, pacman.getX() - 1);
+				break;
+	
+			case "b":
+				MovimentosPacMan.moverPacManY(pacman, pacman.getY() + 1);
+				break;
+	
+			case "c":
+				MovimentosPacMan.moverPacManY(pacman, pacman.getY() - 1);		
+				break;
 		}
-		
-		this.mapa[pacman_x][pacman_y] = 2;		
 	}
 }
 
