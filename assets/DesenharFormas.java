@@ -1,5 +1,8 @@
 package assets;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 
 public class DesenharFormas{
     private static int square = 25;
@@ -32,6 +35,14 @@ public class DesenharFormas{
 
 	//Desenha um cícurlo de squarexsquarepx com fundo preto (vulgo PacMan)
     public static void drawPacMan(Graphics g, int x, int y) {
+        try{
+            final BufferedImage image = ImageIO.read(new File("/home/harry/Documentos/UFABC/[POO]/PACMAN"));
+            g.drawImage(image, x, y, null);
+
+        } catch(Exception e){
+            System.out.println("Excesão: " + e);
+        }
+
     	x = x*square;
 		y = y*square;
 
@@ -39,7 +50,6 @@ public class DesenharFormas{
         g.drawRect(x,y,square,square);
         g.fillRect(x,y,square,square);
         
-        g.setColor(Color.YELLOW);
         g.drawOval(x,y,square,square);
         g.fillOval(x,y,square,square);
     }
