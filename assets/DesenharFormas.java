@@ -36,7 +36,7 @@ public class DesenharFormas{
 	//Desenha um cícurlo de squarexsquarepx com fundo preto (vulgo PacMan)
     public static void drawPacMan(Graphics g, int x, int y) {
         try{
-            final BufferedImage image = ImageIO.read(new File("/home/harry/Documentos/UFABC/[POO]/PACMAN"));
+            final BufferedImage image = ImageIO.read(new File("/home/harry/Documentos/UFABC/[POO]/PACMAN/pacman.gif"));
             g.drawImage(image, x, y, null);
 
         } catch(Exception e){
