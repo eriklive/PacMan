@@ -19,7 +19,7 @@ public abstract class Personagem {
 	}
 
 	public String getDirecao(){
-		return this.direcao;
+		return direcao;
 	}
 
 	public int getX(){

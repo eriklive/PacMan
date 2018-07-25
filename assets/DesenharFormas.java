@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
+import personagens.PacMan;
 
 public class DesenharFormas{
     private static int square = 25;
@@ -34,15 +35,7 @@ public class DesenharFormas{
     }
 
 	//Desenha um cícurlo de squarexsquarepx com fundo preto (vulgo PacMan)
-    public static void drawPacMan(Graphics g, int x, int y) {
-        try{
-            final BufferedImage image = ImageIO.read(new File("/home/harry/Documentos/UFABC/[POO]/PACMAN/pacman.gif"));
-            g.drawImage(image, x, y, null);
-
-        } catch(Exception e){
-            System.out.println("Excesão: " + e);
-        }
-
+    public static void drawPacMan(Graphics g, int x, int y, PacMan pacman) {
     	x = x*square;
 		y = y*square;
 
@@ -50,8 +43,17 @@ public class DesenharFormas{
         g.drawRect(x,y,square,square);
         g.fillRect(x,y,square,square);
         
-        g.drawOval(x,y,square,square);
-        g.fillOval(x,y,square,square);
+        g.setColor(Color.yellow);
+
+        if(pacman.getDirecao() == "d")
+            g.fillArc(x,y,square,square,35,295);
+        else if((pacman.getDirecao() == "e"))
+            g.fillArc(x,y,square,square,210,295);
+        else if((pacman.getDirecao() == "c"))
+            g.fillArc(x,y,square,square,120,295);
+        else if((pacman.getDirecao() == "b"))
+            g.fillArc(x,y,square,square,300,295);
+
     }
 
 	//Desenha um cícurlo de roxo squarexsquarepx com fundo preto (vulgo PacMan)

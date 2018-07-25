@@ -65,7 +65,7 @@ public class Game extends JPanel{
 	    			DesenharFormas.drawParede(g, j, i);
 
 	    		else if(mapa[i][j] == 2)
-	    			DesenharFormas.drawPacMan(g, j, i);
+	    			DesenharFormas.drawPacMan(g, j, i, pacman);
 	    		
 	    		else if(mapa[i][j] == 3)
 	    			DesenharFormas.drawCoin(g, j, i);
