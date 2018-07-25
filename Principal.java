@@ -22,7 +22,7 @@ public class Principal{
             }
         };
 
-        Timer timer = new Timer(400, taskPerformer);
+        Timer timer = new Timer(500, taskPerformer);
         timer.setRepeats(true);
         timer.start();
 

@@ -1,13 +1,14 @@
 package personagens;
+import assets.Random;
 
 public class Fantasma extends Personagem{
 	private int ultimo_item;
 
 	public Fantasma(){
-		setX(4);
-		setY(4);
+		setX(7);
+		setY(11);
 		setUltimoItem(0);
-		setDirecao("b");
+		setDirecao("d");
 	}
 
 	public void setUltimoItem(int ultimo_item){

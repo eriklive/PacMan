@@ -4,8 +4,8 @@ public class PacMan extends Personagem {
 	private int ultimo_item;
 	
 	public PacMan(){
-		setX(7);
-		setY(13);
+		setX(8);
+		setY(2);
 		setDirecao("b");
 	}
 }
