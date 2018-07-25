@@ -9,8 +9,10 @@ public class Principal{
 		
 		Janela janela = new Janela();
 		Telas tela = new Telas();
+		Telas menu = new Telas();
 		
 		janela.criarJanela();
+		janela.addTela(menu);
 		janela.addTela(tela);
 
 		// Time loop
