@@ -4,11 +4,13 @@ import java.awt.*;
 import personagens.*;
 import movimentacao.*;
 import assets.DesenharFormas;
+import javax.swing.Timer;
+import java.awt.event.*;
 
-public class Telas extends JPanel{
+public class Game extends JPanel{
 	Fantasma fantasma = new Fantasma();
 	PacMan pacman = new PacMan();
-
+	
 	public static int[][] mapa = new int[][]{
     	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
     	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
@@ -32,6 +34,23 @@ public class Telas extends JPanel{
     	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
     	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};
+
+	public void start(){
+		// Time loop
+	    ActionListener taskPerformer = new ActionListener() {
+	        public void actionPerformed(ActionEvent evt) {
+	           	updateGhost();
+	           	updatePacMan();
+				repaint();
+	        }
+	    };
+
+	    Timer timer = new Timer(500, taskPerformer);
+	    timer.setRepeats(true);
+	    timer.start();
+
+	    // Thread.sleep(1000);
+	}
 
 	@Override
 	public void paintComponent(Graphics g){
