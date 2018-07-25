@@ -6,7 +6,7 @@ public class Fantasma extends Personagem{
 
 	public Fantasma(){
 		setX(7);
-		setY(11);
+		setY(10);
 		setUltimoItem(0);
 		setDirecao("d");
 	}
