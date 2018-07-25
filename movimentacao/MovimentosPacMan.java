@@ -1,5 +1,6 @@
 package movimentacao;
 import personagens.*;
+import telas.*;
 
 public class MovimentosPacMan {
 
@@ -10,10 +11,11 @@ public class MovimentosPacMan {
 		if( Telas.mapa[novo_x][y] != 1 ){ //novo x não é parede
 
 			//Essa minha posição atual recebe de volta o item a que a ela pertencia
+			Telas.mapa[novo_x][y] = 2;
+			
 			Telas.mapa[x][y] = 0;
 
 			//Sobreponho a ṕróxima posição com meu pacman
-			Telas.mapa[novo_x][y] = 3;
 
 			//atualizo o x do meu pacman
 			pacman.setX( novo_x );
@@ -28,12 +30,11 @@ public class MovimentosPacMan {
 		int y = pacman.getY();
 
 		if(Telas.mapa[x][novo_y] != 1){
-			Telas.mapa[x][y] = pacman.getUltimoItem();
-			pacman.setUltimoItem( Telas.mapa[x][novo_y] );
+			Telas.mapa[x][y] = 0;
 
-			Telas.mapa[x][novo_y] = 3;
+			Telas.mapa[x][novo_y] = 2;
 
-			pacman.setY(novo_y);
+			pacman.setY( novo_y );
 		} else {
 			acharNovaDirecaoX(pacman);
 		}

@@ -1,3 +1,4 @@
+package assets;
 import java.awt.*;
 
 public class DesenharFormas{

@@ -1,5 +1,6 @@
 package movimentacao;
 import personagens.*;
+import telas.*;
 
 public class MovimentosFantasmas {
 

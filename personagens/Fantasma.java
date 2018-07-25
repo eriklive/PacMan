@@ -4,10 +4,10 @@ public class Fantasma extends Personagem{
 	private int ultimo_item;
 
 	public Fantasma(){
-		setX(3);
-		setY(3);
+		setX(4);
+		setY(4);
 		setUltimoItem(0);
-		setDirecao("c");
+		setDirecao("b");
 	}
 
 	public void setUltimoItem(int ultimo_item){

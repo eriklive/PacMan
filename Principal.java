@@ -1,9 +1,6 @@
 import javax.swing.Timer;
 import java.awt.event.*;
-
-// import java.util.TimerTask;
-
-// import javax.swing.Timer;
+import telas.Telas;
 
 public class Principal{
 	public static 	int x = 1;
@@ -25,11 +22,10 @@ public class Principal{
             }
         };
 
-        Timer timer = new Timer(500, taskPerformer);
+        Timer timer = new Timer(400, taskPerformer);
         timer.setRepeats(true);
         timer.start();
 
         Thread.sleep(1000);
-		
 	}
 }
