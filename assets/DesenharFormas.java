@@ -34,9 +34,11 @@ public class DesenharFormas{
     public static void drawPacMan(Graphics g, int x, int y) {
     	x = x*square;
 		y = y*square;
+
 		g.setColor(Color.BLACK);
         g.drawRect(x,y,square,square);
         g.fillRect(x,y,square,square);
+        
         g.setColor(Color.YELLOW);
         g.drawOval(x,y,square,square);
         g.fillOval(x,y,square,square);
