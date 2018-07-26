@@ -4,12 +4,20 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import personagens.PacMan;
+import assets.GameSettings;
 
 public class DesenharFormas{
     private static int square = 25;
     private static int coin = 10;
     private static int padding = (square - coin) / 2;
 
+    public static void drawScore(Graphics g) {
+        //x é a posição "x" da matriz. Como o tamanho de cada bloco é 'square', então a distância
+        //deste novo elemento da esquerda será 'square'*'posição dele da matriz'
+        g.setColor(Color.BLUE);
+        g.drawRect(0,0,GameSettings.getX(),GameSettings.getPaddingY());
+        g.fillRect(0,0,GameSettings.getX(),GameSettings.getPaddingY());
+    }
 
 	//Desenha um bloco de 50x50px
 	public static void drawParede(Graphics g, int x, int y) {
@@ -17,7 +25,7 @@ public class DesenharFormas{
         //deste novo elemento da esquerda será 'square'*'posição dele da matriz'
 
 		x = x*square;
-		y = y*square;
+		y = y*square + GameSettings.getPaddingY();
 
         g.setColor(Color.BLUE);
         g.drawRect(x,y,square,square);
@@ -27,7 +35,7 @@ public class DesenharFormas{
 	//Desenha um bloco de squarexsquarepx preto
     public static void drawNada(Graphics g, int x, int y) {
     	x = x*square;
-		y = y*square;
+		y = y*square + GameSettings.getPaddingY();
 
         g.setColor(Color.BLACK);
         g.drawRect(x,y,square,square);
@@ -37,7 +45,7 @@ public class DesenharFormas{
 	//Desenha um cícurlo de squarexsquarepx com fundo preto (vulgo PacMan)
     public static void drawPacMan(Graphics g, int x, int y, PacMan pacman) {
     	x = x*square;
-		y = y*square;
+		y = y*square + GameSettings.getPaddingY();
 
 		g.setColor(Color.BLACK);
         g.drawRect(x,y,square,square);
@@ -59,7 +67,7 @@ public class DesenharFormas{
 	//Desenha um cícurlo de roxo squarexsquarepx com fundo preto (vulgo PacMan)
     public static void drawGhost(Graphics g, int x, int y) {
     	x = x*square;
-		y = y*square;
+		y = y*square + GameSettings.getPaddingY();
 
 		//background
 		g.setColor(Color.BLACK);
@@ -75,7 +83,7 @@ public class DesenharFormas{
 	//Desenha um cícurlo de 20x20px com fundo preto (moedas)
     public static void drawCoin(Graphics g, int x, int y) {
     	x = x*square;
-		y = y*square;
+		y = y*square + GameSettings.getPaddingY();
 		g.setColor(Color.BLACK);
         g.drawRect(x,y,square,square);
         g.fillRect(x,y,square,square);

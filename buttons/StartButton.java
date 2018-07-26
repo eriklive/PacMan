@@ -4,9 +4,10 @@ import java.awt.event.*;
 import telas.*;
 
 public class StartButton extends JButton{
-	
-	public StartButton(){
-		setText("start");
+	static JButton StartButton;
+
+	private StartButton(){
+		setText("Iniciar Jogo");
 
 		addActionListener(new ActionListener() {
 	      	@Override
@@ -14,6 +15,14 @@ public class StartButton extends JButton{
 	        	Janela.start();
 	      	}
 	    });
+	}
+
+	public static JButton addStartButton(){
+		if(StartButton == null)
+			return new StartButton();
+
+		return StartButton; 
+
 	}
 
 }

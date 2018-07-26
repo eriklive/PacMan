@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import telas.*;
+import assets.GameSettings;
 
 public class Janela{
 
@@ -15,7 +16,7 @@ public class Janela{
 	static CardLayout cl = (CardLayout) (layout.getLayout());
 
 	public void criarJanela(){
-		this.janela.setBounds(0,0,375,555);
+		this.janela.setBounds(0,0,GameSettings.getX(),GameSettings.getY());
 		this.janela.setTitle("PACMAN");
 		this.janela.setResizable(false);
 		this.janela.setVisible(true);
