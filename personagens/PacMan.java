@@ -4,8 +4,7 @@ import assets.DesenharFormas;
 public class PacMan extends Personagem {
 
 	public PacMan(){
-		setX(8);
-		setY(6);
+		acharPersonagem();
 		setDirecao("e");
 	}
 }

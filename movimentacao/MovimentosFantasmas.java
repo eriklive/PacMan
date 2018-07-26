@@ -3,7 +3,6 @@ import personagens.*;
 import telas.*;
 
 public class MovimentosFantasmas {
-
 	public static void moverFantasmaX(Fantasma fantasma, int novo_x){
 		int x = fantasma.getX();
 		int y = fantasma.getY();

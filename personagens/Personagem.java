@@ -40,19 +40,12 @@ public abstract class Personagem {
 		return this.y;
 	}
 
-	public static void acharPersonagem(Personagem personagem){
-		int find;
-
+	public void acharPersonagem(){
 		int[][] mapa = Game.getMap();
 
-		if(personagem instanceof PacMan)
-			find = 2;
-		else
-			find = 8;
-
-		for(int i = 0; i< mapa.length; i++)
-			for(int j = 0; j < mapa[j].length; i++)
-				if(mapa[i][j] == find)
-					personagem.setPosicao(j, i);
+		for(int i = 0; i < mapa.length; i++)
+			for(int j = 0; j < mapa[i].length; j++)
+				if(mapa[i][j] == 2)
+					setPosicao(j, i);
 	}
 }

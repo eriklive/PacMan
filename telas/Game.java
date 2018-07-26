@@ -1,15 +1,17 @@
 package telas;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 import java.awt.*;
 import personagens.*;
 import movimentacao.*;
-import assets.DesenharFormas;
+import assets.*;
 import javax.swing.Timer;
 import java.awt.event.*;
 
 public class Game extends JPanel{
-	Fantasma fantasma = new Fantasma();
-	PacMan pacman = new PacMan();
+	private Fantasma fantasma = new Fantasma();
+	private PacMan pacman = new PacMan();
+    private JLabel score = new JLabel();
 	
 	private static int[][] mapa = new int[][]{
     	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -29,44 +31,22 @@ public class Game extends JPanel{
     	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
     	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
     	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,1,1,3,3,3,3,3,3,1,1,3,3,1},
-    	{1,3,1,1,3,3,3,3,3,3,1,1,3,3,1},
+    	{1,3,1,1,3,3,3,2,3,3,3,1,1,3,1},
+    	{1,3,1,1,3,3,3,3,3,3,3,1,1,3,1},
     	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
     	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};
 
-	public static int[][] getMap(){
-		return mapa;
-	}
-
-	public static int getMapValue(int x, int y){
-		return mapa[y][x];
-	}
-
-	public static void setMapaValue(int x, int y, int value){
-		mapa[y][x] = value;
-	}
-
-	public void start(){
-		// Time loop
-	    ActionListener taskPerformer = new ActionListener() {
-	        public void actionPerformed(ActionEvent evt) {
-	           	updateGhost();
-	           	updatePacMan();
-				repaint();
-	        }
-	    };
-
-	    Timer timer = new Timer(500, taskPerformer);
-	    timer.setRepeats(true);
-	    timer.start();
-
-	    // Thread.sleep(1000);
-	}
-
 	@Override
 	public void paintComponent(Graphics g){
 	    super.paintComponent(g);
+
+	    DesenharFormas.drawScore(g);
+
+        score.setText("Score: " + GameSettings.getScore() );
+        score.setBounds(new Rectangle(0, 0, 300, 50));
+
+	    this.add(score);
 
 	    for(int i=0; i<mapa.length; i++){
 	   		for(int j=0; j<mapa[i].length; j++){
@@ -88,6 +68,36 @@ public class Game extends JPanel{
 	    }  
 	}
 
+	//Starts the game
+	public void start(){
+		// Time loop
+	    ActionListener taskPerformer = new ActionListener() {
+	        public void actionPerformed(ActionEvent evt) {
+	           	updateGhost();
+	           	updatePacMan();
+				repaint();
+	        }
+	    };
+
+	    Timer timer = new Timer(500, taskPerformer);
+	    timer.setRepeats(true);
+	    timer.start();
+
+	    // Thread.sleep(1000);
+	}
+
+	public static int[][] getMap(){
+		return mapa;
+	}
+
+	public static int getMapValue(int x, int y){
+		return mapa[y][x];
+	}
+
+	public static void setMapaValue(int x, int y, int value){
+		mapa[y][x] = value;
+	}
+	
 	public void updateGhost(){	
 		switch( fantasma.getDirecao() ){
 			case "d":
