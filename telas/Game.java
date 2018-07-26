@@ -11,7 +11,7 @@ public class Game extends JPanel{
 	Fantasma fantasma = new Fantasma();
 	PacMan pacman = new PacMan();
 	
-	public static int[][] mapa = new int[][]{
+	private static int[][] mapa = new int[][]{
     	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
     	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
     	{1,3,1,1,3,3,3,3,3,3,3,1,1,3,1},
@@ -34,6 +34,18 @@ public class Game extends JPanel{
     	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
     	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 	};
+
+	public static int[][] getMap(){
+		return mapa;
+	}
+
+	public static int getMapValue(int x, int y){
+		return mapa[y][x];
+	}
+
+	public static void setMapaValue(int x, int y, int value){
+		mapa[y][x] = value;
+	}
 
 	public void start(){
 		// Time loop

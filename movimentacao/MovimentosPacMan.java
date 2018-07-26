@@ -8,13 +8,11 @@ public class MovimentosPacMan {
 		int x = pacman.getX();
 		int y = pacman.getY();
 
-		if( Game.mapa[y][novo_x] != 1 ){ //novo x não é parede
-
+		if( Game.getMapValue(novo_x, y) != 1 ){ //novo x não é parede
 			//Essa minha posição atual recebe de volta o item a que a ela pertencia
-			Game.mapa[y][x] = 0;
-
+			Game.setMapaValue(x,y,0);
 			//Sobreponho a ṕróxima posição com meu pacman
-			Game.mapa[y][novo_x] = 2;
+			Game.setMapaValue(novo_x,y,2);
 
 			//atualizo o x do meu pacman
 			pacman.setX( novo_x );
@@ -28,10 +26,9 @@ public class MovimentosPacMan {
 		int x = pacman.getX();
 		int y = pacman.getY();
 
-		if(Game.mapa[novo_y][x] != 1){
-			Game.mapa[y][x] = 0;
-
-			Game.mapa[novo_y][x] = 2;
+		if(Game.getMapValue(x,novo_y) != 1){
+			Game.setMapaValue(x,y,0);
+			Game.setMapaValue(x,novo_y,2);
 
 			pacman.setY( novo_y );
 		} else {
@@ -43,11 +40,11 @@ public class MovimentosPacMan {
 		int x = pacman.getX();
 		int y = pacman.getY();
 
-		if(Game.mapa[y+1][x] != 1){
+		if(Game.getMapValue(x, y+1) != 1){
 			pacman.setDirecao("b");
 			moverPacManY(pacman, pacman.getY() + 1);
 
-		} else if(Game.mapa[y-1][x] != 1){
+		} else if(Game.getMapValue(x, y-1) != 1){
 			pacman.setDirecao("c");
 			moverPacManY(pacman, pacman.getY() - 1);
 		}
@@ -57,11 +54,11 @@ public class MovimentosPacMan {
 		int x = pacman.getX();
 		int y = pacman.getY();
 
-		if(Game.mapa[y][x+1] != 1){
+		if(Game.getMapValue(x+1, y) != 1){
 			pacman.setDirecao("d");
 			moverPacManX(pacman, pacman.getX() + 1);
 
-		} else if(Game.mapa[y][x-1] != 1){
+		} else if(Game.getMapValue(x-1,y) != 1){
 			pacman.setDirecao("e");
 			moverPacManX(pacman, pacman.getX() - 1);
 		}
