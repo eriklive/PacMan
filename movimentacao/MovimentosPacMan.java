@@ -12,6 +12,9 @@ public class MovimentosPacMan {
 			if(Game.getMapValue(novo_x, y) == 3)
 				GameSettings.addScore();
 
+			if(Game.getMapValue(novo_x, y) == 8 || Game.getMapValue(novo_x, y) == 8)
+				System.out.println("Perdeu");
+			
 			//Essa minha posição atual recebe de volta o item a que a ela pertencia
 			Game.setMapaValue(x,y,0);
 			//Sobreponho a ṕróxima posição com meu pacman
