@@ -26,7 +26,7 @@ public class Janela{
 		inicializar();
 	}
 
-	private void inicializar(){
+	private static void inicializar(){
 		janela.getContentPane().add(layout, BorderLayout.CENTER);
 		layout.add(menu, "Menu");
 		layout.add(game, "Game");
@@ -35,6 +35,12 @@ public class Janela{
 	public static void start(){
 		cl.show(layout, "Game"); //mudará para a tela inicial
 		game.start(4, game);
-	}	
+	}
+
+	public static void endGame(){
+		GameSettings.setGameOver(true);
+		layout.removeAll();
+		Janela.inicializar();
+	}		
 
 }

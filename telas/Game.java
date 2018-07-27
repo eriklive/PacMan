@@ -12,39 +12,16 @@ public class Game extends JPanel{
 	private Fantasma[] fantasma;
 	private PacMan pacman = new PacMan();
     private JLabel score = new JLabel();
-    private static int cont = 0;
-    Teclado act;
+    private Teclado act;
+    private static int time = 1;
 	
 	public Game() {
 		act = new Teclado();
         this.addKeyListener(act);
         this.setFocusable(false);
-		System.out.println(this.isFocusOwner());
 	}
 
-	private static int[][] mapa = new int[][]{
-    	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,1,1,3,3,3,3,3,3,3,1,1,3,1},
-    	{1,3,1,1,3,3,3,3,3,3,3,1,1,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,3,3,3,1,1,3,1,1,3,3,3,3,1},
-    	{1,3,3,3,3,1,3,3,3,1,3,3,3,3,1},
-    	{1,3,3,3,3,1,3,3,3,1,3,3,3,3,1},
-    	{1,3,3,3,3,1,1,1,1,1,3,3,3,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,3,1,1,3,3,3,2,3,3,3,1,1,3,1},
-    	{1,3,1,1,3,3,3,3,3,3,3,1,1,3,1},
-    	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
-    	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-	};
+	private static int[][] mapa = Mapa.novoMapa();
 
 	@Override
 	public void paintComponent(Graphics g){
@@ -79,11 +56,11 @@ public class Game extends JPanel{
 
 	//Starts the game
 	public void start(int n, JPanel panel){	
+		Timer timer;
+
         panel.setFocusable(true);
 		panel.grabFocus();
-        
-		System.out.println(panel.isFocusOwner());
-
+     
 		fantasma = new Fantasma[n];
 
 		for(int i = 0; i<fantasma.length; i++) {
@@ -92,13 +69,23 @@ public class Game extends JPanel{
 
 	    ActionListener taskPerformer = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
-	           	updateGhost();
-	           	updatePacMan();
-				repaint();
-	        }
+	        	if(Game.time % GameSettings.getDificuldade() == 0){
+					UpdateGhostPosition.moveGhost(fantasma);
+					UpdatePacManPosition.moveGhost(pacman, act);
+		           	repaint();
+				}
+
+				if(GameSettings.gameOver()){
+				 	((Timer)(evt.getSource())).stop();
+
+				 	resetMap();
+				}
+
+				Game.time++;
+	        }      
 	    };
 
-	    Timer timer = new Timer(500, taskPerformer);
+	    timer = new Timer(100, taskPerformer);
 	    timer.setRepeats(true);
 	    timer.start();	
 	}
@@ -114,59 +101,11 @@ public class Game extends JPanel{
 	public static void setMapaValue(int x, int y, int value){
 		mapa[y][x] = value;
 	}
-	
-	public void updateGhost(){
-		for(int i = 0; i<fantasma.length; i++){
-			if(cont<3) {
-				MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() - 1);
-				cont+=1;
-			} else {
-				boolean podeAndar = false;
-				while(!podeAndar) {	
-					switch(Random.sorteia()){
-						case "d":
-							podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() + 1);
-							break;
-				
-						case "e":
-							podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() - 1);
-							break;
-				
-						case "b":
-							podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() + 1);
-							break;
-				
-						case "c":
-							podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() - 1);		
-							break;
-					}
-				}
-			}
-		}
-	}
 
-	public void updatePacMan(){	
-		switch( act.getDirTeclado() ){
-			case "d":
-				pacman.setDirecao("d");
-				MovimentosPacMan.moverPacManX(pacman, pacman.getX() + 1);
-				break;
-	
-			case "e":
-				pacman.setDirecao("e");
-				MovimentosPacMan.moverPacManX(pacman, pacman.getX() - 1);
-				break;
-	
-			case "b":
-				pacman.setDirecao("b");
-				MovimentosPacMan.moverPacManY( pacman, pacman.getY() + 1 );
-				break;
-
-			case "c":
-				pacman.setDirecao("c");
-				MovimentosPacMan.moverPacManY(pacman, pacman.getY() - 1);		
-				break;
-		}
-	
+	private void resetMap(){
+		GameSettings.resetScore();
+		GameSettings.setGameOver(false);
+		this.mapa = Mapa.novoMapa();
+		pacman.acharPersonagem();
 	}
 }

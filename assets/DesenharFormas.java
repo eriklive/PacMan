@@ -52,6 +52,7 @@ public class DesenharFormas{
         g.fillRect(x,y,square,square);
         
         g.setColor(Color.yellow);
+
         if(pacman.bocaAberta){
             if(pacman.getDirecao() == "d")
                 g.fillArc(x,y,square,square,35,295);
