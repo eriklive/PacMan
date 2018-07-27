@@ -8,7 +8,6 @@ import telas.*;
 import assets.GameSettings;
 
 public class Janela{
-
 	static JFrame janela = new JFrame();
 	static JPanel layout = new JPanel( new CardLayout() );
 	static Menu menu = new Menu();
@@ -33,7 +32,7 @@ public class Janela{
 
 	public static void start(){
 		cl.show(layout, "Game"); //mudará para a tela inicial
-		game.start();
+		game.start(4);
 	}	
 
 }

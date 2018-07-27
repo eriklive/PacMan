@@ -52,16 +52,21 @@ public class DesenharFormas{
         g.fillRect(x,y,square,square);
         
         g.setColor(Color.yellow);
+        if(pacman.bocaAberta){
+            if(pacman.getDirecao() == "d")
+                g.fillArc(x,y,square,square,35,295);
+            else if((pacman.getDirecao() == "e"))
+                g.fillArc(x,y,square,square,210,295);
+            else if((pacman.getDirecao() == "c"))
+                g.fillArc(x,y,square,square,120,295);
+            else if((pacman.getDirecao() == "b"))
+                g.fillArc(x,y,square,square,300,295);
 
-        if(pacman.getDirecao() == "d")
-            g.fillArc(x,y,square,square,35,295);
-        else if((pacman.getDirecao() == "e"))
-            g.fillArc(x,y,square,square,210,295);
-        else if((pacman.getDirecao() == "c"))
-            g.fillArc(x,y,square,square,120,295);
-        else if((pacman.getDirecao() == "b"))
-            g.fillArc(x,y,square,square,300,295);
-
+            pacman.bocaAberta = false;
+        } else {
+            g.fillOval(x,y,square,square);
+            pacman.bocaAberta = true;
+        }
     }
 
 	//Desenha um cícurlo de roxo squarexsquarepx com fundo preto (vulgo PacMan)

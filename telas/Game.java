@@ -9,10 +9,18 @@ import javax.swing.Timer;
 import java.awt.event.*;
 
 public class Game extends JPanel{
-	private Fantasma fantasma = new Fantasma();
+	private Fantasma[] fantasma;
 	private PacMan pacman = new PacMan();
     private JLabel score = new JLabel();
+    private static int cont = 0;
+    Teclado act;
 	
+	public Game() {
+		act = new Teclado();
+        addKeyListener(act);
+        setFocusable(true);
+	}
+
 	private static int[][] mapa = new int[][]{
     	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
     	{1,3,3,3,3,3,3,3,3,3,3,3,3,3,1},
@@ -62,14 +70,21 @@ public class Game extends JPanel{
 	    		else if(mapa[i][j] == 3)
 	    			DesenharFormas.drawCoin(g, j, i);
 
-	    		else if(mapa[i][j] == 8)
+	    		else if(mapa[i][j] == 8 || mapa[i][j] == 7)
 	    			DesenharFormas.drawGhost(g, j, i);
 	    	}
 	    }  
 	}
 
 	//Starts the game
-	public void start(){
+	public void start(int n){
+		fantasma = new Fantasma[n];
+
+		for(int i = 0; i<fantasma.length; i++) {
+			fantasma[i] = new Fantasma();
+		}
+		// Time loop
+
 		// Time loop
 	    ActionListener taskPerformer = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
@@ -82,8 +97,6 @@ public class Game extends JPanel{
 	    Timer timer = new Timer(500, taskPerformer);
 	    timer.setRepeats(true);
 	    timer.start();
-
-	    // Thread.sleep(1000);
 	}
 
 	public static int[][] getMap(){
@@ -98,41 +111,55 @@ public class Game extends JPanel{
 		mapa[y][x] = value;
 	}
 	
-	public void updateGhost(){	
-		switch( fantasma.getDirecao() ){
-			case "d":
-				MovimentosFantasmas.moverFantasmaX(fantasma, fantasma.getX() + 1);
-				break;
-	
-			case "e":
-				MovimentosFantasmas.moverFantasmaX(fantasma, fantasma.getX() - 1);
-				break;
-	
-			case "b":
-				MovimentosFantasmas.moverFantasmaY(fantasma, fantasma.getY() + 1);
-				break;
-	
-			case "c":
-				MovimentosFantasmas.moverFantasmaY(fantasma, fantasma.getY() - 1);		
-				break;
+	public void updateGhost(){
+		for(int i = 0; i<fantasma.length; i++){
+			if(cont<3) {
+				MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() - 1);
+				cont+=1;
+			} else {
+				boolean podeAndar = false;
+				while(!podeAndar) {	
+					switch(Random.sorteia()){
+						case "d":
+							podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() + 1);
+							break;
+				
+						case "e":
+							podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() - 1);
+							break;
+				
+						case "b":
+							podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() + 1);
+							break;
+				
+						case "c":
+							podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() - 1);		
+							break;
+					}
+				}
+			}
 		}
 	}
 
 	public void updatePacMan(){	
-		switch( pacman.getDirecao() ){
+		switch( act.getDirTeclado() ){
 			case "d":
+				pacman.setDirecao("d");
 				MovimentosPacMan.moverPacManX(pacman, pacman.getX() + 1);
 				break;
 	
 			case "e":
+				pacman.setDirecao("e");
 				MovimentosPacMan.moverPacManX(pacman, pacman.getX() - 1);
 				break;
 	
 			case "b":
+				pacman.setDirecao("b");
 				MovimentosPacMan.moverPacManY( pacman, pacman.getY() + 1 );
 				break;
-	
+
 			case "c":
+				pacman.setDirecao("c");
 				MovimentosPacMan.moverPacManY(pacman, pacman.getY() - 1);		
 				break;
 		}

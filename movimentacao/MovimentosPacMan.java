@@ -19,8 +19,6 @@ public class MovimentosPacMan {
 
 			//atualizo o x do meu pacman
 			pacman.setX( novo_x );
-		} else {
-			acharNovaDirecaoY(pacman);
 		}
 
 	}
@@ -37,37 +35,6 @@ public class MovimentosPacMan {
 			Game.setMapaValue(x,novo_y,2);
 
 			pacman.setY( novo_y );
-		} else {
-			acharNovaDirecaoX(pacman);
 		}
-	}
-
-	public static void acharNovaDirecaoY(PacMan pacman){
-		int x = pacman.getX();
-		int y = pacman.getY();
-
-		if(Game.getMapValue(x, y+1) != 1){
-			pacman.setDirecao("b");
-			moverPacManY(pacman, pacman.getY() + 1);
-
-		} else if(Game.getMapValue(x, y-1) != 1){
-			pacman.setDirecao("c");
-			moverPacManY(pacman, pacman.getY() - 1);
-		}
-	}
-
-	public static void acharNovaDirecaoX(PacMan pacman){
-		int x = pacman.getX();
-		int y = pacman.getY();
-
-		if(Game.getMapValue(x+1, y) != 1){
-			pacman.setDirecao("d");
-			moverPacManX(pacman, pacman.getX() + 1);
-
-		} else if(Game.getMapValue(x-1,y) != 1){
-			pacman.setDirecao("e");
-			moverPacManX(pacman, pacman.getX() - 1);
-		}
-		
 	}
 }
