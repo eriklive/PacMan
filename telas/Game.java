@@ -17,8 +17,9 @@ public class Game extends JPanel{
 	
 	public Game() {
 		act = new Teclado();
-        addKeyListener(act);
-        setFocusable(true);
+        this.addKeyListener(act);
+        this.setFocusable(false);
+		System.out.println(this.isFocusOwner());
 	}
 
 	private static int[][] mapa = new int[][]{
@@ -77,15 +78,18 @@ public class Game extends JPanel{
 	}
 
 	//Starts the game
-	public void start(int n){
+	public void start(int n, JPanel panel){	
+        panel.setFocusable(true);
+		panel.grabFocus();
+        
+		System.out.println(panel.isFocusOwner());
+
 		fantasma = new Fantasma[n];
 
 		for(int i = 0; i<fantasma.length; i++) {
 			fantasma[i] = new Fantasma();
 		}
-		// Time loop
 
-		// Time loop
 	    ActionListener taskPerformer = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
 	           	updateGhost();
@@ -96,7 +100,7 @@ public class Game extends JPanel{
 
 	    Timer timer = new Timer(500, taskPerformer);
 	    timer.setRepeats(true);
-	    timer.start();
+	    timer.start();	
 	}
 
 	public static int[][] getMap(){

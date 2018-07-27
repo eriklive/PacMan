@@ -6,8 +6,11 @@ import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import telas.*;
 import assets.GameSettings;
+import java.awt.*;
+
 
 public class Janela{
+
 	static JFrame janela = new JFrame();
 	static JPanel layout = new JPanel( new CardLayout() );
 	static Menu menu = new Menu();
@@ -20,7 +23,6 @@ public class Janela{
 		this.janela.setResizable(false);
 		this.janela.setVisible(true);
 		this.janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 		inicializar();
 	}
 
@@ -32,7 +34,7 @@ public class Janela{
 
 	public static void start(){
 		cl.show(layout, "Game"); //mudará para a tela inicial
-		game.start(4);
+		game.start(4, game);
 	}	
 
 }

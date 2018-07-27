@@ -17,7 +17,6 @@ public class Teclado implements KeyListener {
 
         if (keyCode == e.VK_LEFT) {
             this.dir = "e";
-            System.out.println("oi");
         }
         if (keyCode == e.VK_RIGHT) {
            this.dir = "d";
