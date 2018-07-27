@@ -8,7 +8,6 @@ public class Menu extends JPanel {
 	@Override
 	public void paintComponent(Graphics g){
 	    super.paintComponent(g);
-
 		add(StartButton.addStartButton());
 
 	    g.setColor(Color.BLACK);
