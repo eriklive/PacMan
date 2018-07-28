@@ -36,7 +36,7 @@ public class Game extends JPanel{
 
 	    for(int i=0; i<mapa.length; i++){
 	   		for(int j=0; j<mapa[i].length; j++){
-	   			if(mapa[i][j] == 0)
+	   			if(mapa[i][j] == 0 || mapa[i][j] == 5 || mapa[i][j] == 6 || mapa[i][j] == 10 || mapa[i][j] == 12)
 	    			DesenharFormas.drawNada(g, j, i);
 
 	    		if(mapa[i][j] == 1)
