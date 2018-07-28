@@ -39,8 +39,8 @@ public class MovimentosFantasmas {
 	}
 
 	private static void updateNextPos( Fantasma fantasma, int x, int y){
-		if(isPortal(x, y, fantasma))
-			return;
+		// if(isPortal(x, y, fantasma))
+		// 	return;
 
 		if(Game.getMapValue(x,y)==0 || Game.getMapValue(x,y)==8)
 			Game.setMapaValue(x, y, 8);
@@ -51,11 +51,8 @@ public class MovimentosFantasmas {
 		else if(Game.getMapValue(x,y)==5)
 			Game.setMapaValue(x, y, 7);
 
-		//atualizo o x do meu fantasma
-		fantasma.setX( x );
-
 		//Check if this position is a portal trigger
-		Flags.setPortal(x, y);
+		// Flags.setPortal(x, y);
 	}
 
 	public static boolean moverFantasmaX(Fantasma fantasma, int novo_x){
@@ -75,6 +72,9 @@ public class MovimentosFantasmas {
 			//Sobreponho a ṕróxima posição com meu fantasma
 			updateNextPos(fantasma, novo_x, y);
 
+			//atualizo o x do meu fantasma
+			fantasma.setX( x );
+			
 			perdeu(x, y);
 
 			return true;

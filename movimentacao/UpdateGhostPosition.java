@@ -16,10 +16,10 @@ public abstract class UpdateGhostPosition {
 				while(!podeAndar) {	
 					switch( Random.sorteia() ){
 						case "d":
-							// if(( fantasma[i].getLastPos() ).equals("e")){
+							if(( fantasma[i].getLastPos() ).equals("e")){
 								podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() + 1);
-								// fantasma[i].setLastPos("d");
-							// }
+								fantasma[i].setLastPos("d");
+							}
 							break;
 				
 						case "e":
