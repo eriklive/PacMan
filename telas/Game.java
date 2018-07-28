@@ -109,4 +109,20 @@ public class Game extends JPanel{
 		this.mapa = Mapa.novoMapa();
 		pacman.acharPersonagem();
 	}
+
+	public static int getNextPortal(int value){
+		if(value == 5)
+			return 10;
+
+		if(value == 6)
+			return 12;
+
+		if(value == 12)
+			return 6;
+
+		if(value == 10)
+			return 5;
+
+		return 0;
+	}
 }
