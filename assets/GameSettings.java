@@ -6,6 +6,7 @@ public abstract class GameSettings{
 	private static int screenSizeY = 605;
 	private static int paddingTop = 50;
 	private static int score = 0;
+	private static int hi_score = 0;
 	private static int dificuldade = 4;
 	private static boolean game_over = false;
 
@@ -28,6 +29,15 @@ public abstract class GameSettings{
 
 	public static int getScore(){
 		return score;
+	}
+
+	public static int getHiScore(){
+		return hi_score;
+	}
+
+	public static void updateHiScore(){
+		if(score > hi_score)
+			hi_score = score;
 	}
 
 	public static void addScore(){

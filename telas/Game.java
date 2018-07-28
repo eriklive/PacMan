@@ -57,6 +57,7 @@ public class Game extends JPanel{
 	//Starts the game
 	public void start(int n, JPanel panel){	
 		Timer timer;
+		GameSettings.resetScore();
 
         panel.setFocusable(true);
 		panel.grabFocus();
@@ -103,8 +104,8 @@ public class Game extends JPanel{
 	}
 
 	private void resetMap(){
-		GameSettings.resetScore();
 		GameSettings.setGameOver(false);
+		GameSettings.updateHiScore();
 		this.mapa = Mapa.novoMapa();
 		pacman.acharPersonagem();
 	}

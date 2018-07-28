@@ -4,7 +4,7 @@ import java.awt.event.*;
 import telas.*;
 
 public class StartButton extends JButton{
-	static JButton startButton;
+	private static JButton startButton;
 
 	private StartButton(){
 		setText("Iniciar Jogo");
@@ -22,7 +22,5 @@ public class StartButton extends JButton{
 			startButton = new StartButton();
 
 		return startButton; 
-
 	}
-
 }
