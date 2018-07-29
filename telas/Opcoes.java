@@ -23,6 +23,20 @@ public class Opcoes extends JPanel {
 
 		GridLayout grid = new GridLayout(12,1);
 
+		JLabel txtChoose = new JLabel("Escolha um mapa: ");
+		
+		voltar.setFont(new Font("Press Start 2P",Font.BOLD,10));
+		voltar.setForeground(Color.RED);
+		txtChoose.setFont(new Font("Press Start 2P",Font.BOLD,15));
+		txtChoose.setForeground(Color.BLACK);
+		buttonOne.setFont(new Font("Press Start 2P",Font.BOLD,15));
+		buttonOne.setForeground(Color.BLACK);
+		buttonTwo.setFont(new Font("Press Start 2P",Font.BOLD,15));
+		buttonTwo.setForeground(Color.BLACK);
+		buttonTree.setFont(new Font("Press Start 2P",Font.BOLD,15));
+		buttonTree.setForeground(Color.BLACK);
+
+
 		//Here we create one section for each thing
 		JPanel sectionOne = new JPanel(new GridLayout(0,3));
 		JPanel sectionTwo = new JPanel(new GridLayout(1,1));
@@ -32,7 +46,8 @@ public class Opcoes extends JPanel {
 
 		sectionOne.add(voltar, BorderLayout.CENTER);
 
-		sectionTwo.add(new JLabel("Escolha um tipo de mapa: "), BorderLayout.CENTER);
+
+		sectionTwo.add(txtChoose, BorderLayout.CENTER);
 
 		sectionTree.add(buttonOne, BorderLayout.CENTER);
 		sectionTree.add(buttonTwo, BorderLayout.CENTER);
