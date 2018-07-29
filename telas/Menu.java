@@ -12,9 +12,8 @@ public class Menu extends JPanel {
 	public void paintComponent(Graphics g){
 	    super.paintComponent(g);
 		
-		GridLayout experimentLayout = new GridLayout(12,6);
-
-        setLayout(experimentLayout);
+		GridLayout grid = new GridLayout(12,6);
+        setLayout(grid);
 
 		add(HiScore.addHiScore(), BorderLayout.PAGE_START);
 		add(Score.addScore(), BorderLayout.PAGE_START);

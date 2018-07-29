@@ -10,9 +10,11 @@ public class Opcoes extends JPanel {
 	public void paintComponent(Graphics g){
 	    super.paintComponent(g);
 
-	    JLabel opcoes = new JLabel("Opções");
+	    GridLayout grid = new GridLayout(12,6);
+        setLayout(grid);
 
-	    opcoes.setForeground(Color.red);
+	    JLabel opcoes = new JLabel("Opções");
+	    opcoes.setForeground(Color.white);
 
 	    add(opcoes, BorderLayout.PAGE_START);
 
