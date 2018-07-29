@@ -36,9 +36,10 @@ public class MovimentosPacMan {
 
 		if( Game.getMapValue(novo_x, y) != 1 ){ //novo x não é parede
 			if(Game.getMapValue(novo_x, y) == 3){
-				
+				GameSettings.setMoedas();
 				GameSettings.addScore();
 			}
+			
 
 			//Essa minha posição atual recebe de volta o item a que a ela pertencia
 			Game.setMapaValue(x,y,0);
@@ -57,8 +58,10 @@ public class MovimentosPacMan {
 		int y = pacman.getY();
 
 		if(Game.getMapValue(x,novo_y) != 1){
-			if(Game.getMapValue(x, novo_y) == 3)
+			if(Game.getMapValue(x, novo_y) == 3){
+				GameSettings.setMoedas();
 				GameSettings.addScore();
+			}
 			
 			perdeu(x, novo_y);
 

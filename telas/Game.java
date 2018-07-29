@@ -22,6 +22,7 @@ public class Game extends JPanel{
 		act = new Teclado();
         this.addKeyListener(act);
         this.setFocusable(false);
+		GameSettings.setMap(1);
 	}
 
 	@Override
@@ -62,11 +63,12 @@ public class Game extends JPanel{
 
 	//Starts the game
 	public void start(int n, JPanel panel){	
-		Janela.updateJanela();
 		Timer timer;
 	    EatingSound eatingSound = new EatingSound();
 
 		GameSettings.resetScore();
+		Janela.updateJanela();
+
         panel.setFocusable(true);
 		panel.grabFocus();
      
@@ -81,7 +83,7 @@ public class Game extends JPanel{
 	        public void actionPerformed(ActionEvent evt) {
 	        	if(Game.time % GameSettings.getDificuldade() == 0){
 					UpdateGhostPosition.moveGhost(fantasma);
-					UpdatePacManPosition.moveGhost(pacman, act);
+					UpdatePacManPosition.movePacMan(pacman, act);
 		           	repaint();
 		           	GameSettings.updateHiScore();
 				}

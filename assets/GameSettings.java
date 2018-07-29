@@ -11,23 +11,29 @@ public abstract class GameSettings{
 	private static int hi_score = 0;
 	private static int dificuldade = 3;
 	private static boolean game_over = false;
-	private static int map = 1;
-	private static int qnt_moedas = 0;
+	private static int map;
+	private static int moedas = 0;
 
-	private static void setQntMoedas(){
+	private static void initMoedas(){
+		GameSettings.moedas = 0;
+
 		int[][] mapa = GameSettings.getMap();
 
 		for(int i = 0; i<mapa.length; i++)
 			for(int j = 0; j<mapa[0].length; j++)
 				if(mapa[i][j] == 3)
-					GameSettings.qnt_moedas++;
+					GameSettings.moedas++;
 
 		//Just for debug
-		System.out.println(qnt_moedas);
+		System.out.println(moedas);
+	}
+
+	public static void setMoedas(){
+		GameSettings.moedas--;
 	}
 
 	public static int getQntMoedas(){
-		return GameSettings.qnt_moedas;
+		return GameSettings.moedas;
 	}
 
 	public static void setScreenSize(int screenSizeOnX, int screenSizeOnY){
@@ -99,6 +105,7 @@ public abstract class GameSettings{
 
 	public static void setMap(int map){
 		GameSettings.map = map;
+		GameSettings.initMoedas();
 	}
 
 	

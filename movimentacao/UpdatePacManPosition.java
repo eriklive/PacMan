@@ -6,7 +6,7 @@ import assets.Random;
 public abstract class UpdatePacManPosition {
 	private static int cont = 0;
 
-	public static void moveGhost(PacMan pacman, Teclado act){
+	public static void movePacMan(PacMan pacman, Teclado act){
 		switch( act.getDirTeclado() ){
 			case "d":
 				pacman.setDirecao("d");

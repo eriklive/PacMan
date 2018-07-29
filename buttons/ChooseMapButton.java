@@ -1,7 +1,6 @@
 package buttons;
 import javax.swing.JButton;
 import java.awt.event.*;
-import telas.*;
 import assets.GameSettings;
 import telas.Game;
 
