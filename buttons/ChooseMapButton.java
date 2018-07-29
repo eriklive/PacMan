@@ -2,25 +2,20 @@ package buttons;
 import javax.swing.JButton;
 import java.awt.event.*;
 import telas.*;
+import assets.GameSettings;
 
 public class ChooseMapButton extends JButton{
-	private static JButton chooseMapButton;
+	public ChooseMapButton(String texto, int mapa){
+		setText(texto);
+		addActionListener( actionListener(mapa) );
+	}
 
-	private ChooseMapButton(){
-		setText("Mapa um");
-		
-		addActionListener(new ActionListener() {
+	private ActionListener actionListener(int mapa){
+		return new ActionListener() {
 	      	@Override
 	      	public void actionPerformed(ActionEvent e) {
-	        	Janela.opcoes();
+	        	GameSettings.setMap(mapa);
 	      	}
-	    });
-	}
-
-	public static JButton addChooseMapButton(){
-		if(chooseMapButton == null)
-			chooseMapButton = new ChooseMapButton();
-
-		return chooseMapButton; 
-	}
+	    };
+	} 
 }

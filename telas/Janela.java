@@ -42,8 +42,11 @@ public class Janela{
 	}
 
 	public static void opcoes(){
-		System.out.println("Janela de opções");
 		cl.show(layout, "Opcoes"); //mudará para a tela inicial
+	}
+
+	public static void menu(){
+		cl.show(layout, "Menu"); 
 	}
 
 	public static void endGame(){

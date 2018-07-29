@@ -14,7 +14,7 @@ public class Game extends JPanel{
     private JLabel score = new JLabel();
     private Teclado act;
     private static int time = 1;
-	private static int[][] mapa = Mapa.novoMapa();
+	private static int[][] mapa = GameSettings.getMap();
 	
 	public Game() {
 		act = new Teclado();

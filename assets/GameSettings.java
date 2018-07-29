@@ -10,7 +10,7 @@ public abstract class GameSettings{
 	private static int hi_score = 0;
 	private static int dificuldade = 4;
 	private static boolean game_over = false;
-	private static int map = 0;
+	private static int map = 1;
 
 	public static void setScreenSize(int x, int y){
 		GameSettings.screenSizeX = 375;
@@ -62,21 +62,23 @@ public abstract class GameSettings{
 		return dificuldade;
 	}
 
-	public static void setMap(int map){
-		GameSettings.map = map;
-	}
-
 	public static int[][] getMap(){
-		if(GameSettings.map == 0)
+		if(GameSettings.map == 1)
 			return Mapa.mapaUm();
 
-		if(GameSettings.map == 1)
+		if(GameSettings.map == 2)
 			return Mapa.mapaDois();
 
-		if(GameSettings.map == 2)
+		if(GameSettings.map == 3)
 			return Mapa.mapaTres();
 
 		return Mapa.mapaUm();
 
 	}
+
+	public static void setMap(int map){
+		GameSettings.map = map;
+	}
+
+	
 }
