@@ -11,12 +11,16 @@ public class Menu extends JPanel {
 	@Override
 	public void paintComponent(Graphics g){
 	    super.paintComponent(g);
-	    // setBorder(new EmptyBorder(4,4,4,4));
+		
+		GridLayout experimentLayout = new GridLayout(12,6);
 
-	    // add(Score.addScore(), BorderLayout.PAGE_START);
-	    add(HiScore.addHiScore(), BorderLayout.PAGE_START);
-	    // add(new JSeparator(), BorderLayout.CENTER	);
+        setLayout(experimentLayout);
+
+		add(HiScore.addHiScore(), BorderLayout.PAGE_START);
+		add(Score.addScore(), BorderLayout.PAGE_START);
+
 		add(StartButton.addStartButton(), BorderLayout.CENTER);
+		add(OptionsButton.addOptionsButton(), BorderLayout.CENTER);
 
 	    g.setColor(Color.BLACK);
 	    g.drawRect(0,0,GameSettings.getX(), GameSettings.getY());

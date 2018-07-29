@@ -13,8 +13,11 @@ public class Janela{
 
 	static JFrame janela = new JFrame();
 	static JPanel layout = new JPanel( new CardLayout() );
+
+	//Janelas
 	static Menu menu = new Menu();
 	static Game game = new Game();
+	static Opcoes opcoes = new Opcoes();
 	static CardLayout cl = (CardLayout) (layout.getLayout());
 
 	public void criarJanela(){
@@ -29,12 +32,18 @@ public class Janela{
 	private static void inicializar(){
 		janela.getContentPane().add(layout, BorderLayout.CENTER);
 		layout.add(menu, "Menu");
+		layout.add(opcoes, "Opcoes");
 		layout.add(game, "Game");
 	}
 
 	public static void start(){
 		cl.show(layout, "Game"); //mudará para a tela inicial
 		game.start(4, game);
+	}
+
+	public static void opcoes(){
+		System.out.println("Janela de opções");
+		cl.show(layout, "Opcoes"); //mudará para a tela inicial
 	}
 
 	public static void endGame(){

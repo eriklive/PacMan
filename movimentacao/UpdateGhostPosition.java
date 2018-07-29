@@ -16,31 +16,43 @@ public abstract class UpdateGhostPosition {
 				while(!podeAndar) {	
 					switch( Random.sorteia() ){
 						case "d":
-							if(( fantasma[i].getLastPos() ).equals("e")){
-								podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() + 1);
-								fantasma[i].setLastPos("d");
-							}
+							// while(( fantasma[i].getLastPos() ).equals("d")){
+							// 	Random.sorteia();
+							// }
+
+							podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() + 1);
+							// fantasma[i].setLastPos("d");
+							
 							break;
 				
 						case "e":
-							// if(( fantasma[i].getLastPos() ).equals("d")){
-								podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() - 1);
-								// fantasma[i].setLastPos("e");
+							// while(( fantasma[i].getLastPos() ).equals("d")){
+							// 	Random.sorteia();
 							// }
+
+							podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() - 1);
+							// fantasma[i].setLastPos("e");
+
 							break;
 				
 						case "b":
-							// if(( fantasma[i].getLastPos() ).equals("c")){
-								podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() + 1);
-								// fantasma[i].setLastPos("b");
+							// while(( fantasma[i].getLastPos() ).equals("d")){
+							// 	Random.sorteia();
 							// }
+
+							podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() + 1);
+							// fantasma[i].setLastPos("b");
+							
 							break;
 				
 						case "c":
-							// if(( fantasma[i].getLastPos() ).equals("b")){
-								podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() - 1);		
-								// fantasma[i].setLastPos("c");
-							// }	
+							// while(( fantasma[i].getLastPos() ).equals("d")){
+							// 	Random.sorteia();
+							// }
+
+							podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() - 1);		
+							// fantasma[i].setLastPos("c");
+							
 							break;
 					}
 				}

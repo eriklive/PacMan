@@ -7,7 +7,7 @@ public class HiScore extends JLabel{
 
 	private HiScore(){
 		setText("HiScore: " + GameSettings.getHiScore() + "\n");
-        // score.setBounds( new Rectangle(0, 0, 300, 50) );
+		setForeground(Color.white);
 	}
 
 	public static JLabel addHiScore(){

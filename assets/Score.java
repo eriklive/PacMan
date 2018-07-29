@@ -7,6 +7,7 @@ public class Score extends JLabel{
 
 	private Score(){
 		setText("Score: " + GameSettings.getScore() + "\n");
+		setForeground(Color.white);
         // score.setBounds( new Rectangle(0, 0, 300, 50) );
 	}
 

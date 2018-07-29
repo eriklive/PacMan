@@ -73,7 +73,7 @@ public class MovimentosFantasmas {
 			updateNextPos(fantasma, novo_x, y);
 
 			//atualizo o x do meu fantasma
-			fantasma.setX( x );
+			fantasma.setX( novo_x );
 			
 			perdeu(x, y);
 

@@ -1,0 +1,1 @@
+javac assets/*.java buttons/*.java movimentacao/*.java personagens/*java telas/*.java Principal.java
