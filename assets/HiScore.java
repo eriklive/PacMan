@@ -14,6 +14,12 @@ public class HiScore extends JLabel{
 		if(hiscore == null)
 			hiscore = new HiScore();
 
+		HiScore.updateJLabelHiScore();
+		
 		return hiscore;
+	}
+
+	public static void updateJLabelHiScore(){
+		HiScore.hiscore.setText("HiScore: " + GameSettings.getHiScore())	;
 	}
 }

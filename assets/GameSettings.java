@@ -1,5 +1,6 @@
 // Implements this on entire game
 package assets;
+import assets.Mapa;
 
 public abstract class GameSettings{
 	private static int screenSizeX = 375;
@@ -9,10 +10,11 @@ public abstract class GameSettings{
 	private static int hi_score = 0;
 	private static int dificuldade = 4;
 	private static boolean game_over = false;
+	private static int map = 0;
 
-	public void setScreenSize(int x, int y){
-		this.screenSizeX = 375;
-		this.screenSizeY = 555;
+	public static void setScreenSize(int x, int y){
+		GameSettings.screenSizeX = 375;
+		GameSettings.screenSizeY = 555;
 	}
 
 	public static int getX(){
@@ -36,8 +38,10 @@ public abstract class GameSettings{
 	}
 
 	public static void updateHiScore(){
-		if(score > hi_score)
-			hi_score = score;
+		System.out.println("Score: " + GameSettings.getScore() + ", HiScore: " + GameSettings.getHiScore());
+
+		if(GameSettings.getScore() > GameSettings.getHiScore())
+			GameSettings.hi_score = GameSettings.score;
 	}
 
 	public static void addScore(){
@@ -45,7 +49,7 @@ public abstract class GameSettings{
 	}
 
 	public static void resetScore(){
-		score=0;
+		GameSettings.score=0;
 	}
 
 	public static boolean gameOver(){
@@ -58,5 +62,23 @@ public abstract class GameSettings{
 
 	public static int getDificuldade(){
 		return dificuldade;
+	}
+
+	public static void setMap(int map){
+		GameSettings.map = map;
+	}
+
+	public static int[][] getMap(){
+		if(GameSettings.map == 0)
+			return Mapa.mapaUm();
+
+		if(GameSettings.map == 1)
+			return Mapa.mapaDois();
+
+		if(GameSettings.map == 2)
+			return Mapa.mapaTres();
+
+		return Mapa.mapaUm();
+
 	}
 }

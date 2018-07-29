@@ -10,7 +10,6 @@ import java.awt.*;
 
 
 public class Janela{
-
 	static JFrame janela = new JFrame();
 	static JPanel layout = new JPanel( new CardLayout() );
 
@@ -24,16 +23,17 @@ public class Janela{
 		this.janela.setBounds(0,0,GameSettings.getX(),GameSettings.getY());
 		this.janela.setTitle("PACMAN");
 		this.janela.setResizable(false);
-		this.janela.setVisible(true);
 		this.janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		inicializar();
+		this.janela.setVisible(true);
 	}
 
 	private static void inicializar(){
 		janela.getContentPane().add(layout, BorderLayout.CENTER);
+
 		layout.add(menu, "Menu");
-		layout.add(opcoes, "Opcoes");
 		layout.add(game, "Game");
+		layout.add(opcoes, "Opcoes");
 	}
 
 	public static void start(){
@@ -48,8 +48,8 @@ public class Janela{
 
 	public static void endGame(){
 		GameSettings.setGameOver(true);
-		layout.removeAll();
-		Janela.inicializar();
+		cl.show(layout, "Menu"); 
+
 	}		
 
 }

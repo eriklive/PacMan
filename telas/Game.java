@@ -14,14 +14,13 @@ public class Game extends JPanel{
     private JLabel score = new JLabel();
     private Teclado act;
     private static int time = 1;
+	private static int[][] mapa = Mapa.novoMapa();
 	
 	public Game() {
 		act = new Teclado();
         this.addKeyListener(act);
         this.setFocusable(false);
 	}
-
-	private static int[][] mapa = Mapa.novoMapa();
 
 	@Override
 	public void paintComponent(Graphics g){
@@ -34,6 +33,7 @@ public class Game extends JPanel{
 
 	    this.add(score);
 
+	    //desenhando o mapa
 	    for(int i=0; i<mapa.length; i++){
 	   		for(int j=0; j<mapa[i].length; j++){
 	   			if(mapa[i][j] == 0 || mapa[i][j] == 5 || mapa[i][j] == 6 || mapa[i][j] == 10 || mapa[i][j] == 12)
@@ -57,8 +57,8 @@ public class Game extends JPanel{
 	//Starts the game
 	public void start(int n, JPanel panel){	
 		Timer timer;
-		GameSettings.resetScore();
 
+		GameSettings.resetScore();
         panel.setFocusable(true);
 		panel.grabFocus();
      
@@ -74,9 +74,10 @@ public class Game extends JPanel{
 					UpdateGhostPosition.moveGhost(fantasma);
 					UpdatePacManPosition.moveGhost(pacman, act);
 		           	repaint();
+		           	GameSettings.updateHiScore();
 				}
 
-				if(GameSettings.gameOver()){
+				if( GameSettings.gameOver() ){
 				 	((Timer)(evt.getSource())).stop();
 
 				 	resetMap();
@@ -105,7 +106,6 @@ public class Game extends JPanel{
 
 	private void resetMap(){
 		GameSettings.setGameOver(false);
-		GameSettings.updateHiScore();
 		this.mapa = Mapa.novoMapa();
 		pacman.acharPersonagem();
 	}

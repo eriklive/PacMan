@@ -11,7 +11,7 @@ public class Menu extends JPanel {
 	@Override
 	public void paintComponent(Graphics g){
 	    super.paintComponent(g);
-		
+
 		GridLayout grid = new GridLayout(12,6);
         setLayout(grid);
 
@@ -25,6 +25,4 @@ public class Menu extends JPanel {
 	    g.drawRect(0,0,GameSettings.getX(), GameSettings.getY());
 	    g.fillRect(0,0,GameSettings.getX(), GameSettings.getY());
 	}
-
-	
 }

@@ -6,17 +6,22 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;	
 
 public class Opcoes extends JPanel {
+	private JButton chooseMapButton;
+
+	public Opcoes(){
+		chooseMapButton = ChooseMapButton.addChooseMapButton();
+	}
+
 	@Override
 	public void paintComponent(Graphics g){
+		System.out.println("Janela de opções carregada.");
 	    super.paintComponent(g);
-
-	    GridLayout grid = new GridLayout(12,6);
+		
+		GridLayout grid = new GridLayout(12,6);
         setLayout(grid);
 
-	    JLabel opcoes = new JLabel("Opções");
-	    opcoes.setForeground(Color.white);
-
-	    add(opcoes, BorderLayout.PAGE_START);
+		add(chooseMapButton, BorderLayout.PAGE_START);
+		add(ChooseMapButton.addChooseMapButton(), BorderLayout.PAGE_START);
 
 	    g.setColor(Color.BLACK);
 	    g.drawRect(0,0,GameSettings.getX(), GameSettings.getY());
