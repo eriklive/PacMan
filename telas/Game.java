@@ -1,18 +1,18 @@
 package telas;
+import javax.swing.Timer;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import java.awt.event.*;
 import java.awt.*;
+import assets.*;
 import personagens.*;
 import movimentacao.*;
-import assets.*;
-import javax.swing.Timer;
-import java.awt.event.*;
+
 import sounds.*;
 
 public class Game extends JPanel{
 	private Fantasma[] fantasma;
 	private PacMan pacman = new PacMan();
-    private JLabel score = new JLabel();
     private Teclado act;
     private static int time = 1;
     private static int numFantasmas;
@@ -28,12 +28,14 @@ public class Game extends JPanel{
 	public void paintComponent(Graphics g){
 	    super.paintComponent(g);
 
+		removeAll();
+
 	    DesenharFormas.drawScore(g);
 
-        score.setText("Score: " + GameSettings.getScore() );
-        score.setBounds(new Rectangle(0, 0, 300, 50));
+        // score.setText("Score: " + GameSettings.getScore() );
+        // score.setBounds(new Rectangle(0, 0, 300, 50));
 
-	    this.add(score);
+	    this.add(new Score(), BorderLayout.PAGE_START);
 
 	    //desenhando o mapa
 	    for(int i=0; i<mapa.length; i++){
@@ -54,10 +56,13 @@ public class Game extends JPanel{
 	    			DesenharFormas.drawGhost(g, j, i);
 	    	}
 	    }  
+
+	    revalidate();
 	}
 
 	//Starts the game
 	public void start(int n, JPanel panel){	
+		Janela.updateJanela();
 		Timer timer;
 	    EatingSound eatingSound = new EatingSound();
 

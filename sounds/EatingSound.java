@@ -19,12 +19,11 @@ public class EatingSound implements Sounds{
 
 	private void getSong() {
 	    try {
-	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("eating.wav").getAbsoluteFile());
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("assets/sounds/eating.wav").getAbsoluteFile());
 	        clip = AudioSystem.getClip();
         	this.clip.open( audioInputStream );
-	    } catch(Exception ex) {
-	        System.out.println("Error with playing sound.");
-	        ex.printStackTrace();
+	    } catch(Exception e) {
+	        System.out.println("Não foi possível reproduzir o som: " + e);
 	    }
 	}
 }

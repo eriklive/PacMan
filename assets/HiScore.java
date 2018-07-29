@@ -6,7 +6,7 @@ public class HiScore extends JLabel{
 	private static JLabel hiscore;
 
 	private HiScore(){
-		setFont(new Font("Press Start 2P",Font.BOLD,15));
+		setFont(new Font("Press Start 2P",Font.BOLD,10));
 		setText("HiScore: " + GameSettings.getHiScore() + "\n");
 		setForeground(Color.white);
 	}

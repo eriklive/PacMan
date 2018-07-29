@@ -21,12 +21,20 @@ public class Janela{
 	static CardLayout cl = (CardLayout) (layout.getLayout());
 
 	public void criarJanela(){
-		this.janela.setBounds(0,0,GameSettings.getX(),GameSettings.getY());
+		this.janela.setBounds(0,0,GameSettings.getScreenX(),GameSettings.getScreenY());
 		this.janela.setTitle("PACMAN");
 		this.janela.setResizable(false);
 		this.janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		inicializar();
 		this.janela.setVisible(true);
+	}
+
+	public static void updateJanela(){
+		Janela.janela.setBounds(0,0,GameSettings.getScreenX(),GameSettings.getScreenY());
+	}
+
+	public static void updateJanela(int x, int y){
+		Janela.janela.setBounds(0,0,x,y);
 	}
 
 	private static void inicializar(){

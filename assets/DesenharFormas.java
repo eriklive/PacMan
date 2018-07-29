@@ -12,8 +12,8 @@ public class DesenharFormas{
         //x é a posição "x" da matriz. Como o tamanho de cada bloco é 'square', então a distância
         //deste novo elemento da esquerda será 'square'*'posição dele da matriz'
         g.setColor(Color.BLUE);
-        g.drawRect(0,0,GameSettings.getX(),GameSettings.getPaddingY());
-        g.fillRect(0,0,GameSettings.getX(),GameSettings.getPaddingY());
+        g.drawRect(0,0,GameSettings.getScreenX(),GameSettings.getPaddingY());
+        g.fillRect(0,0,GameSettings.getScreenX(),GameSettings.getPaddingY());
     }
 
 	//Desenha um bloco de 50x50px

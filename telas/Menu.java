@@ -1,15 +1,16 @@
 package telas;
-import buttons.*;
+import javax.swing.border.EmptyBorder;	
+import javax.swing.*;
+import java.awt.*;
 import assets.GameSettings;
 import assets.Score;
 import assets.HiScore;
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;	
+import buttons.*;
 
 public class Menu extends JPanel {
 	@Override
 	public void paintComponent(Graphics g){
+		Janela.updateJanela(375,605);
 	    super.paintComponent(g);
 
 	    //Remove old stuff that still in here
@@ -32,7 +33,7 @@ public class Menu extends JPanel {
 		sectionTree.setBackground(Color.BLACK);
 
 		sectionOne.add(HiScore.addHiScore(), BorderLayout.PAGE_START);
-		sectionOne.add(Score.addScore(), BorderLayout.PAGE_START);
+		sectionOne.add(new Score(), BorderLayout.PAGE_START);
 
 		sectionTwo.add(pacman, BorderLayout.CENTER);
 
@@ -44,8 +45,8 @@ public class Menu extends JPanel {
 		add(sectionTree);
 
 		g.setColor(Color.BLACK);
-	    g.drawRect(0,0,GameSettings.getX(), GameSettings.getY());
-	    g.fillRect(0,0,GameSettings.getX(), GameSettings.getY());
+	    g.drawRect(0,0,GameSettings.getScreenX(), GameSettings.getScreenY());
+	    g.fillRect(0,0,GameSettings.getScreenX(), GameSettings.getScreenY());
 
 	    revalidate();
 	}

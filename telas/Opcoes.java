@@ -19,6 +19,7 @@ public class Opcoes extends JPanel {
 		ChooseMapButton buttonOne = new ChooseMapButton("Um", 1);
 		ChooseMapButton buttonTwo = new ChooseMapButton("Dois", 2);
 		ChooseMapButton buttonTree = new ChooseMapButton("Três", 3);
+		ChooseMapButton buttonFour = new ChooseMapButton("Quatro", 4);
 		MenuButton voltar = new MenuButton();
 
 		GridLayout grid = new GridLayout(12,1);
@@ -40,11 +41,13 @@ public class Opcoes extends JPanel {
 		buttonTree.setFont(new Font("Press Start 2P",Font.BOLD,15));
 		buttonTree.setForeground(Color.BLACK);
 
+		buttonFour.setFont(new Font("Press Start 2P",Font.BOLD,15));
+		buttonFour.setForeground(Color.BLACK);
 
 		//Here we create one section for each thing
 		JPanel sectionOne = new JPanel(new GridLayout(0,3));
 		JPanel sectionTwo = new JPanel(new GridLayout(1,1));
-		JPanel sectionTree = new JPanel(new GridLayout(1,3));
+		JPanel sectionTree = new JPanel(new GridLayout(1,4));
 
         setLayout(grid);
 
@@ -57,6 +60,7 @@ public class Opcoes extends JPanel {
 		sectionTree.add(buttonOne, BorderLayout.CENTER);
 		sectionTree.add(buttonTwo, BorderLayout.CENTER);
 		sectionTree.add(buttonTree, BorderLayout.CENTER);
+		sectionTree.add(buttonFour, BorderLayout.CENTER);
 		sectionTree.setBackground(Color.BLACK);
 
 		add(sectionOne);
@@ -64,8 +68,8 @@ public class Opcoes extends JPanel {
 		add(sectionTree);
 
 	    g.setColor(Color.BLACK);
-	    g.drawRect(0,0,GameSettings.getX(), GameSettings.getY());
-	    g.fillRect(0,0,GameSettings.getX(), GameSettings.getY());
+	    g.drawRect(0,0,GameSettings.getScreenX(), GameSettings.getScreenY());
+	    g.fillRect(0,0,GameSettings.getScreenX(), GameSettings.getScreenY());
 
 	    revalidate();
 	}
