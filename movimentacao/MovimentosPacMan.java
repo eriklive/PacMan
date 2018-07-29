@@ -6,6 +6,11 @@ import assets.FindValue;
 import assets.Flags;
 
 public class MovimentosPacMan {
+	private static void perdeu(int x, int y){
+		if( Game.getMapValue(x, y) == 7 || Game.getMapValue(x, y) == 8 )
+			Janela.endGame();
+	}
+
 	private static boolean isPortal(int x, int y, PacMan pacman){
 		//If this position is a portal trigger, then this method makes the movement
 		if(Flags.isPortal()){
@@ -26,12 +31,14 @@ public class MovimentosPacMan {
 		int x = pacman.getX();
 		int y = pacman.getY();
 
-		if(isPortal(x, y, pacman))
-			return;
+		// if(isPortal(x, y, pacman))
+		// 	return;
 
 		if( Game.getMapValue(novo_x, y) != 1 ){ //novo x não é parede
-			if(Game.getMapValue(novo_x, y) == 3)
+			if(Game.getMapValue(novo_x, y) == 3){
+				
 				GameSettings.addScore();
+			}
 
 			//Essa minha posição atual recebe de volta o item a que a ela pertencia
 			Game.setMapaValue(x,y,0);
@@ -53,6 +60,8 @@ public class MovimentosPacMan {
 			if(Game.getMapValue(x, novo_y) == 3)
 				GameSettings.addScore();
 			
+			perdeu(x, novo_y);
+
 			Game.setMapaValue(x,y,0);
 			Game.setMapaValue(x,novo_y,2);
 

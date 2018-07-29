@@ -7,6 +7,7 @@ import movimentacao.*;
 import assets.*;
 import javax.swing.Timer;
 import java.awt.event.*;
+import sounds.*;
 
 public class Game extends JPanel{
 	private Fantasma[] fantasma;
@@ -14,6 +15,7 @@ public class Game extends JPanel{
     private JLabel score = new JLabel();
     private Teclado act;
     private static int time = 1;
+    private static int numFantasmas;
 	private static int[][] mapa = GameSettings.getMap();
 	
 	public Game() {
@@ -57,12 +59,14 @@ public class Game extends JPanel{
 	//Starts the game
 	public void start(int n, JPanel panel){	
 		Timer timer;
+	    EatingSound eatingSound = new EatingSound();
 
 		GameSettings.resetScore();
         panel.setFocusable(true);
 		panel.grabFocus();
      
 		fantasma = new Fantasma[n];
+		numFantasmas = n;
 
 		for(int i = 0; i<fantasma.length; i++) {
 			fantasma[i] = new Fantasma();
@@ -79,7 +83,9 @@ public class Game extends JPanel{
 
 				if( GameSettings.gameOver() ){
 				 	((Timer)(evt.getSource())).stop();
-
+				 	UpdateGhostPosition.setCont(0);
+				 	pacman.setDirecao("d");
+				 	eatingSound.stop();
 				 	resetMap();
 				}
 
@@ -90,8 +96,13 @@ public class Game extends JPanel{
 	    timer = new Timer(100, taskPerformer);
 	    timer.setRepeats(true);
 	    timer.start();	
+	    eatingSound.play();
 	}
 
+	public static int getFantasmas() {
+		return numFantasmas;
+	}
+	
 	public static int[][] getMap(){
 		return mapa;
 	}

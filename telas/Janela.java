@@ -7,7 +7,8 @@ import java.awt.BorderLayout;
 import telas.*;
 import assets.GameSettings;
 import java.awt.*;
-
+import javax.swing.Timer;
+import java.util.TimerTask;
 
 public class Janela{
 	static JFrame janela = new JFrame();
@@ -51,6 +52,7 @@ public class Janela{
 
 	public static void endGame(){
 		GameSettings.setGameOver(true);
+
 		cl.show(layout, "Menu"); 
 	}		
 

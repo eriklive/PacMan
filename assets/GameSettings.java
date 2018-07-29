@@ -8,7 +8,7 @@ public abstract class GameSettings{
 	private static int paddingTop = 50;
 	private static int score = 0;
 	private static int hi_score = 0;
-	private static int dificuldade = 4;
+	private static int dificuldade = 3;
 	private static boolean game_over = false;
 	private static int map = 1;
 

@@ -27,12 +27,16 @@ public class Opcoes extends JPanel {
 		
 		voltar.setFont(new Font("Press Start 2P",Font.BOLD,10));
 		voltar.setForeground(Color.RED);
+
 		txtChoose.setFont(new Font("Press Start 2P",Font.BOLD,15));
-		txtChoose.setForeground(Color.BLACK);
+		txtChoose.setForeground(Color.WHITE);
+
 		buttonOne.setFont(new Font("Press Start 2P",Font.BOLD,15));
 		buttonOne.setForeground(Color.BLACK);
+
 		buttonTwo.setFont(new Font("Press Start 2P",Font.BOLD,15));
 		buttonTwo.setForeground(Color.BLACK);
+
 		buttonTree.setFont(new Font("Press Start 2P",Font.BOLD,15));
 		buttonTree.setForeground(Color.BLACK);
 
@@ -45,13 +49,15 @@ public class Opcoes extends JPanel {
         setLayout(grid);
 
 		sectionOne.add(voltar, BorderLayout.CENTER);
-
+		sectionOne.setBackground(Color.BLACK);
 
 		sectionTwo.add(txtChoose, BorderLayout.CENTER);
+		sectionTwo.setBackground(Color.BLACK);
 
 		sectionTree.add(buttonOne, BorderLayout.CENTER);
 		sectionTree.add(buttonTwo, BorderLayout.CENTER);
 		sectionTree.add(buttonTree, BorderLayout.CENTER);
+		sectionTree.setBackground(Color.BLACK);
 
 		add(sectionOne);
 		add(sectionTwo);
