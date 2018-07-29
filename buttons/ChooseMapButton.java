@@ -3,6 +3,7 @@ import javax.swing.JButton;
 import java.awt.event.*;
 import telas.*;
 import assets.GameSettings;
+import telas.Game;
 
 public class ChooseMapButton extends JButton{
 	public ChooseMapButton(String texto, int mapa){
@@ -15,6 +16,7 @@ public class ChooseMapButton extends JButton{
 	      	@Override
 	      	public void actionPerformed(ActionEvent e) {
 	        	GameSettings.setMap(mapa);
+	        	Game.setMap();
 	      	}
 	    };
 	} 

@@ -106,8 +106,12 @@ public class Game extends JPanel{
 
 	private void resetMap(){
 		GameSettings.setGameOver(false);
-		this.mapa = Mapa.novoMapa();
+		this.mapa = GameSettings.getMap();
 		pacman.acharPersonagem();
+	}
+
+	public static void setMap(){
+		Game.mapa = GameSettings.getMap();
 	}
 
 	public static int getNextPortal(int value){

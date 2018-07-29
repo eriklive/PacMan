@@ -6,7 +6,7 @@ public class Score extends JLabel{
 	private static JLabel score;
 
 	private Score(){
-		setFont(new Font("Press Start 2P",Font.BOLD,25));
+		setFont(new Font("Press Start 2P",Font.BOLD,15));
 		setText("Score: " + GameSettings.getScore() + "\n");
 		setForeground(Color.white);
 	}
