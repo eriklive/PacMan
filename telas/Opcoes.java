@@ -14,8 +14,9 @@ public class Opcoes extends JPanel {
 
 	@Override
 	public void paintComponent(Graphics g){
-		System.out.println("Janela de opções carregada.");
 	    super.paintComponent(g);
+		
+		System.out.println("Janela de opções carregada.");
 		
 		GridLayout grid = new GridLayout(12,6);
         setLayout(grid);

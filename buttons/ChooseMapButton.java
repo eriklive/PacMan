@@ -8,6 +8,7 @@ public class ChooseMapButton extends JButton{
 
 	private ChooseMapButton(){
 		setText("Mapa um");
+		
 		addActionListener(new ActionListener() {
 	      	@Override
 	      	public void actionPerformed(ActionEvent e) {

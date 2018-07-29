@@ -38,8 +38,6 @@ public abstract class GameSettings{
 	}
 
 	public static void updateHiScore(){
-		System.out.println("Score: " + GameSettings.getScore() + ", HiScore: " + GameSettings.getHiScore());
-
 		if(GameSettings.getScore() > GameSettings.getHiScore())
 			GameSettings.hi_score = GameSettings.score;
 	}

@@ -49,7 +49,6 @@ public class Janela{
 	public static void endGame(){
 		GameSettings.setGameOver(true);
 		cl.show(layout, "Menu"); 
-
 	}		
 
 }
