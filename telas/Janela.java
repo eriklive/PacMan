@@ -1,14 +1,14 @@
 package telas;
 
-import javax.swing.JPanel;
-import javax.swing.JFrame;
+import java.awt.*;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
-import telas.*;
-import assets.GameSettings;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
 import javax.swing.Timer;
 import java.util.TimerTask;
+import telas.*;
+import assets.GameSettings;
 
 public class Janela{
 	static JFrame janela = new JFrame();
@@ -60,8 +60,16 @@ public class Janela{
 
 	public static void endGame(){
 		GameSettings.setGameOver(true);
-
 		cl.show(layout, "Menu"); 
+	}	
+
+	public static void nextLevel(){
+		if(GameSettings.getMapId() >=4){
+			Janela.endGame();
+		} else {
+			GameSettings.setMap(GameSettings.getMapId()+1);
+			game.start(4, game);
+		}
 	}		
 
 }

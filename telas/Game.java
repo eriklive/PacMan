@@ -7,22 +7,23 @@ import java.awt.*;
 import assets.*;
 import personagens.*;
 import movimentacao.*;
-
 import sounds.*;
 
 public class Game extends JPanel{
 	private Fantasma[] fantasma;
 	private PacMan pacman = new PacMan();
+	private JLabel score = new JLabel();
     private Teclado act;
-    private static int time = 1;
+    private int timerHold = 3000;
     private static int numFantasmas;
-	private static int[][] mapa = GameSettings.getMap();
-	
+	private static int[][] mapa = GameSettings.getMap();	
+
 	public Game() {
 		act = new Teclado();
         this.addKeyListener(act);
-        this.setFocusable(false);
 		GameSettings.setMap(1);
+		this.mapa = GameSettings.getMap();
+		GameSettings.initMoedas();
 	}
 
 	@Override
@@ -33,15 +34,17 @@ public class Game extends JPanel{
 
 	    DesenharFormas.drawScore(g);
 
-        // score.setText("Score: " + GameSettings.getScore() );
-        // score.setBounds(new Rectangle(0, 0, 300, 50));
+        score.setText("Score: " + GameSettings.getScore() );
+        score.setBounds(new Rectangle(0, 0, 300, 50));
+        this.add(score,BorderLayout.PAGE_START);
 
-	    this.add(new Score(), BorderLayout.PAGE_START);
+	    // this.add(new Score(), BorderLayout.PAGE_START);
 
 	    //desenhando o mapa
 	    for(int i=0; i<mapa.length; i++){
 	   		for(int j=0; j<mapa[i].length; j++){
-	   			if(mapa[i][j] == 0 || mapa[i][j] == 5 || mapa[i][j] == 6 || mapa[i][j] == 10 || mapa[i][j] == 12)
+	   			// if(mapa[i][j] == 0 || mapa[i][j] == 5 || mapa[i][j] == 6 || mapa[i][j] == 10 || mapa[i][j] == 12)
+	   			if(mapa[i][j] == 0 )
 	    			DesenharFormas.drawNada(g, j, i);
 
 	    		if(mapa[i][j] == 1)
@@ -63,47 +66,58 @@ public class Game extends JPanel{
 
 	//Starts the game
 	public void start(int n, JPanel panel){	
+		panel.removeAll();
+
 		Timer timer;
+		Timer secondTimer;
 	    EatingSound eatingSound = new EatingSound();
 
 		GameSettings.resetScore();
 		Janela.updateJanela();
-
         panel.setFocusable(true);
 		panel.grabFocus();
      
 		fantasma = new Fantasma[n];
 		numFantasmas = n;
 
-		for(int i = 0; i<fantasma.length; i++) {
+		for(int i = 0; i<fantasma.length; i++)
 			fantasma[i] = new Fantasma();
-		}
-
+		
 	    ActionListener taskPerformer = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
-	        	if(Game.time % GameSettings.getDificuldade() == 0){
-					UpdateGhostPosition.moveGhost(fantasma);
-					UpdatePacManPosition.movePacMan(pacman, act);
-		           	repaint();
-		           	GameSettings.updateHiScore();
-				}
+	        	this.timerHold = 300;
+				UpdateGhostPosition.moveGhost(fantasma);
+				UpdatePacManPosition.movePacMan(pacman, act);
+	           	GameSettings.updateHiScore();
+	           	repaint();
+			    panel.revalidate();
 
 				if( GameSettings.gameOver() ){
-				 	((Timer)(evt.getSource())).stop();
+					( (Timer)( evt.getSource() ) ).stop();
 				 	UpdateGhostPosition.setCont(0);
 				 	pacman.setDirecao("d");
 				 	eatingSound.stop();
 				 	resetMap();
 				}
 
-				Game.time++;
+				if( GameSettings.getMoedas() <= 0 ){
+				 	((Timer)(evt.getSource())).stop();
+				 	UpdateGhostPosition.setCont(0);
+				 	pacman.setDirecao("d");
+				 	eatingSound.stop();
+				 	Janela.nextLevel();
+				 	resetMap();
+				}
 	        }      
 	    };
 
-	    timer = new Timer(100, taskPerformer);
+    	timer = new Timer(400, taskPerformer);
 	    timer.setRepeats(true);
-	    timer.start();	
+	    timer.start();
+
 	    eatingSound.play();
+
+	    panel.revalidate();
 	}
 
 	public static int getFantasmas() {

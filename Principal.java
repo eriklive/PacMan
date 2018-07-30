@@ -6,9 +6,8 @@ public class Principal{
 
 	public static void main(String args[]) throws Exception{
 		Janela janela = new Janela();
+		janela.criarJanela();
 		
 		Fonts.load();
-
-		janela.criarJanela();
 	}
 }

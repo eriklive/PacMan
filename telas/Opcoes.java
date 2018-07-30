@@ -16,10 +16,10 @@ public class Opcoes extends JPanel {
 	    //Remove old stuff that still in here
 		removeAll();
 
-		ChooseMapButton buttonOne = new ChooseMapButton("Um", 1);
-		ChooseMapButton buttonTwo = new ChooseMapButton("Dois", 2);
-		ChooseMapButton buttonTree = new ChooseMapButton("Três", 3);
-		ChooseMapButton buttonFour = new ChooseMapButton("Quatro", 4);
+		ChooseMapButton buttonOne = new ChooseMapButton("1", 1);
+		ChooseMapButton buttonTwo = new ChooseMapButton("2", 2);
+		ChooseMapButton buttonTree = new ChooseMapButton("3", 3);
+		ChooseMapButton buttonFour = new ChooseMapButton("4", 4);
 		MenuButton voltar = new MenuButton();
 
 		GridLayout grid = new GridLayout(12,1);

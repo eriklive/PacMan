@@ -9,12 +9,12 @@ public abstract class GameSettings{
 	private static int paddingTop = 50;
 	private static int score = 0;
 	private static int hi_score = 0;
-	private static int dificuldade = 3;
+	private static int dificuldade = 4;
 	private static boolean game_over = false;
 	private static int map;
 	private static int moedas = 0;
 
-	private static void initMoedas(){
+	public static void initMoedas(){
 		GameSettings.moedas = 0;
 
 		int[][] mapa = GameSettings.getMap();
@@ -23,16 +23,13 @@ public abstract class GameSettings{
 			for(int j = 0; j<mapa[0].length; j++)
 				if(mapa[i][j] == 3)
 					GameSettings.moedas++;
-
-		//Just for debug
-		System.out.println(moedas);
 	}
 
 	public static void setMoedas(){
 		GameSettings.moedas--;
 	}
 
-	public static int getQntMoedas(){
+	public static int getMoedas(){
 		return GameSettings.moedas;
 	}
 
@@ -99,8 +96,11 @@ public abstract class GameSettings{
 		if(GameSettings.map == 4)
 			return Mapa.mapaQuatro();
 
-		return Mapa.mapaUm();
-
+		return Mapa.mapaTres();
+	}
+	
+	public static int getMapId(){
+		return GameSettings.map;
 	}
 
 	public static void setMap(int map){

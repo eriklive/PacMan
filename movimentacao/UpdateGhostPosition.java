@@ -24,35 +24,35 @@ public abstract class UpdateGhostPosition {
 				while(!podeAndar) {	
 					switch( Random.sorteia() ){
 						case "d":
-							if(!( fantasma[i].getDirecao() ).equals("e")){
+							// if(!( fantasma[i].getDirecao() ).equals("e")){
 								podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() + 1);
-								if(podeAndar)
-									fantasma[i].setDirecao("d");
-							}
+							// 	if(podeAndar)
+							// 		fantasma[i].setDirecao("d");
+							// }
 							break;
 				
 						case "e":
-							if(!( fantasma[i].getDirecao() ).equals("d")){
+							// if(!( fantasma[i].getDirecao() ).equals("d")){
 								podeAndar=MovimentosFantasmas.moverFantasmaX(fantasma[i], fantasma[i].getX() - 1);
-								if(podeAndar)
-									fantasma[i].setDirecao("e");
-							}
+							// 	if(podeAndar)
+							// 		fantasma[i].setDirecao("e");
+							// }
 							break;
 				
 						case "b":
-							if(!( fantasma[i].getDirecao() ).equals("c")){
+							// if(!( fantasma[i].getDirecao() ).equals("c")){
 								podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() + 1);
-								if(podeAndar)
-									fantasma[i].setDirecao("b");
-							}
+							// 	if(podeAndar)
+							// 		fantasma[i].setDirecao("b");
+							// }
 							break;
 				 
 						case "c":
-							if(!( fantasma[i].getDirecao() ).equals("b")){
+							// if(!( fantasma[i].getDirecao() ).equals("b")){
 								podeAndar=MovimentosFantasmas.moverFantasmaY(fantasma[i], fantasma[i].getY() - 1);		
-								if(podeAndar)
-									fantasma[i].setDirecao("c");
-							}	
+							// 	if(podeAndar)
+							// 		fantasma[i].setDirecao("c");
+							// }	
 							break;
 					}
 				}

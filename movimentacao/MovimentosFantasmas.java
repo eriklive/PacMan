@@ -11,21 +11,21 @@ public class MovimentosFantasmas {
 			Janela.endGame();
 	}
 
-	private static boolean isPortal(int x, int y, Fantasma fantasma){
-		//If this position is a portal trigger, then this method makes the movement
-		if(Flags.isPortal()){
-			int nextPortal = Game.getNextPortal( Game.getMapValue(x, y) );
+	// private static boolean isPortal(int x, int y, Fantasma fantasma){
+	// 	//If this position is a portal trigger, then this method makes the movement
+	// 	if(Flags.isPortal()){
+	// 		int nextPortal = Game.getNextPortal( Game.getMapValue(x, y) );
 
-			int[] nextMove = FindValue.find(nextPortal);
-			Game.setMapaValue(nextMove[0],nextMove[1], fantasma.getUltimoItem());
+	// 		int[] nextMove = FindValue.find(nextPortal);
+	// 		Game.setMapaValue(nextMove[0],nextMove[1], fantasma.getUltimoItem());
 
-			fantasma.setX( nextMove[0] );
+	// 		fantasma.setX( nextMove[0] );
 
-			return true;
-		}
+	// 		return true;
+	// 	}
 
-		return false;
-	}
+	// 	return false;
+	// }
 
 	private static void atualizarUltimoItem(Fantasma fantasma, int x, int y){
 		if(fantasma.getUltimoItem()==8)
