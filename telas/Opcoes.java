@@ -20,6 +20,7 @@ public class Opcoes extends JPanel {
 		ChooseMapButton buttonTwo = new ChooseMapButton("2", 2);
 		ChooseMapButton buttonTree = new ChooseMapButton("3", 3);
 		ChooseMapButton buttonFour = new ChooseMapButton("4", 4);
+		ChooseMapButton buttonFive = new ChooseMapButton("5", 5);
 		MenuButton voltar = new MenuButton();
 
 		GridLayout grid = new GridLayout(12,1);
@@ -44,6 +45,9 @@ public class Opcoes extends JPanel {
 		buttonFour.setFont(new Font("Press Start 2P",Font.BOLD,15));
 		buttonFour.setForeground(Color.BLACK);
 
+		buttonFive.setFont(new Font("Press Start 2P",Font.BOLD,15));
+		buttonFive.setForeground(Color.BLACK);
+
 		//Here we create one section for each thing
 		JPanel sectionOne = new JPanel(new GridLayout(0,3));
 		JPanel sectionTwo = new JPanel(new GridLayout(1,1));
@@ -61,6 +65,7 @@ public class Opcoes extends JPanel {
 		sectionTree.add(buttonTwo, BorderLayout.CENTER);
 		sectionTree.add(buttonTree, BorderLayout.CENTER);
 		sectionTree.add(buttonFour, BorderLayout.CENTER);
+		sectionTree.add(buttonFive, BorderLayout.CENTER);
 		sectionTree.setBackground(Color.BLACK);
 
 		add(sectionOne);
@@ -73,6 +78,4 @@ public class Opcoes extends JPanel {
 
 	    revalidate();
 	}
-
-	
 }

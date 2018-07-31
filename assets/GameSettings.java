@@ -95,6 +95,9 @@ public abstract class GameSettings{
 
 		if(GameSettings.map == 4)
 			return Mapa.mapaQuatro();
+		
+		if(GameSettings.map == 5)
+			return Mapa.mapaCinco();
 
 		return Mapa.mapaTres();
 	}

@@ -64,7 +64,7 @@ public class Janela{
 	}	
 
 	public static void nextLevel(){
-		if(GameSettings.getMapId() >=4){
+		if(GameSettings.getMapId() >=5){
 			Janela.endGame();
 		} else {
 			GameSettings.setMap(GameSettings.getMapId()+1);

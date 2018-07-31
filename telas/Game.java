@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import java.awt.event.*;
 import java.awt.*;
 import assets.*;
+import textos.Score;
 import personagens.*;
 import movimentacao.*;
 import sounds.*;
@@ -20,31 +21,28 @@ public class Game extends JPanel{
 
 	public Game() {
 		act = new Teclado();
+		this.mapa = GameSettings.getMap();
         this.addKeyListener(act);
 		GameSettings.setMap(1);
-		this.mapa = GameSettings.getMap();
 		GameSettings.initMoedas();
 	}
 
 	@Override
 	public void paintComponent(Graphics g){
+		removeAll();
+	    
 	    super.paintComponent(g);
 
-		removeAll();
-
-	    DesenharFormas.drawScore(g);
-
-        score.setText("Score: " + GameSettings.getScore() );
+		score = Score.addScore();
         score.setBounds(new Rectangle(0, 0, 300, 50));
-        this.add(score,BorderLayout.PAGE_START);
 
-	    // this.add(new Score(), BorderLayout.PAGE_START);
+		this.setBackground(Color.BLACK);
+        this.add(score, BorderLayout.PAGE_START);
 
 	    //desenhando o mapa
 	    for(int i=0; i<mapa.length; i++){
 	   		for(int j=0; j<mapa[i].length; j++){
-	   			// if(mapa[i][j] == 0 || mapa[i][j] == 5 || mapa[i][j] == 6 || mapa[i][j] == 10 || mapa[i][j] == 12)
-	   			if(mapa[i][j] == 0 )
+	   			if(mapa[i][j] == 0 || mapa[i][j] == 9)
 	    			DesenharFormas.drawNada(g, j, i);
 
 	    		if(mapa[i][j] == 1)
@@ -76,7 +74,8 @@ public class Game extends JPanel{
 		Janela.updateJanela();
         panel.setFocusable(true);
 		panel.grabFocus();
-     
+     	
+     	pacman.acharPersonagem();
 		fantasma = new Fantasma[n];
 		numFantasmas = n;
 
@@ -91,20 +90,14 @@ public class Game extends JPanel{
 	           	repaint();
 			    panel.revalidate();
 
-				if( GameSettings.gameOver() ){
-					( (Timer)( evt.getSource() ) ).stop();
-				 	UpdateGhostPosition.setCont(0);
-				 	pacman.setDirecao("d");
-				 	eatingSound.stop();
-				 	resetMap();
-				}
+				if( GameSettings.gameOver() || GameSettings.getMoedas() <= 0){
+					if (GameSettings.getMoedas() <= 0) 
+				 		Janela.nextLevel();
 
-				if( GameSettings.getMoedas() <= 0 ){
-				 	((Timer)(evt.getSource())).stop();
+				 	( (Timer)( evt.getSource() ) ).stop();
 				 	UpdateGhostPosition.setCont(0);
 				 	pacman.setDirecao("d");
-				 	eatingSound.stop();
-				 	Janela.nextLevel();
+				 	eatingSound.stop();	
 				 	resetMap();
 				}
 	        }      

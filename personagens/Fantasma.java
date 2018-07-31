@@ -1,12 +1,20 @@
 package personagens;
 import assets.Random;
+import assets.GameSettings;
 
 public class Fantasma extends Personagem{
 	private int ultimo_item;
 
 	public Fantasma(){
-		setX(7);
-		setY(10);
+		int[][] mapa = GameSettings.getMap();
+
+		for(int i = 0; i<mapa.length; i++)
+			for(int j = 0; j<mapa[0].length; j++)
+				if(mapa[i][j] == 9) {
+					setX(j);
+					setY(i);
+				}
+		
 		setUltimoItem(0);
 		setDirecao("b");
 	}

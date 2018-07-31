@@ -3,8 +3,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 import java.awt.*;
 import assets.GameSettings;
-import assets.Score;
-import assets.HiScore;
+import textos.*;
 import buttons.*;
 
 public class Menu extends JPanel {
@@ -32,8 +31,8 @@ public class Menu extends JPanel {
 		sectionTwo.setBackground(Color.BLACK);
 		sectionTree.setBackground(Color.BLACK);
 
-		sectionOne.add(HiScore.addHiScore(), BorderLayout.PAGE_START);
-		sectionOne.add(new Score(), BorderLayout.PAGE_START);
+		sectionOne.add(HiScore.addScore(), BorderLayout.PAGE_START);
+		sectionOne.add(Score.addScore(), BorderLayout.PAGE_START);
 
 		sectionTwo.add(pacman, BorderLayout.CENTER);
 
