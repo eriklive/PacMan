@@ -1,6 +1,6 @@
 package buttons;
 import java.awt.event.*;
-import telas.*;
+import telas.Janela;
 
 public class OptionsButton extends Button{
 	public OptionsButton(){

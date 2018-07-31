@@ -4,8 +4,8 @@ import assets.GameSettings;
 import telas.Game;
 
 public class ChooseMapButton extends Button{
-	int mapa;
-	
+	private int mapa;
+
 	public ChooseMapButton(String texto, int mapa){
 		super(texto);
 		this.mapa = mapa;
