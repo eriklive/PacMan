@@ -37,8 +37,8 @@ public class Menu extends JPanel {
 
 		sectionTwo.add(pacman, BorderLayout.CENTER);
 
-		sectionTree.add(StartButton.addStartButton(), BorderLayout.CENTER);
-		sectionTree.add(OptionsButton.addOptionsButton(), BorderLayout.CENTER);
+		sectionTree.add(new StartButton(), BorderLayout.CENTER);
+		sectionTree.add(new OptionsButton(), BorderLayout.CENTER);
 
 		add(sectionOne);
 		add(sectionTwo);

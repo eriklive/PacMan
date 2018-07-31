@@ -85,7 +85,6 @@ public class Game extends JPanel{
 		
 	    ActionListener taskPerformer = new ActionListener() {
 	        public void actionPerformed(ActionEvent evt) {
-	        	this.timerHold = 300;
 				UpdateGhostPosition.moveGhost(fantasma);
 				UpdatePacManPosition.movePacMan(pacman, act);
 	           	GameSettings.updateHiScore();

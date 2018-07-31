@@ -1,15 +1,14 @@
 package buttons;
-import javax.swing.JButton;
 import java.awt.event.*;
 import telas.Janela;
 
-public class MenuButton extends JButton{
+public class MenuButton extends Button{
 	public MenuButton(){
-		setText("Voltar");
-		addActionListener( actionListener() );
+		super("Voltar");
 	}
 
-	private ActionListener actionListener(){
+	@Override
+	public ActionListener actionListener(){
 		return new ActionListener() {
 	      	@Override
 	      	public void actionPerformed(ActionEvent e) {

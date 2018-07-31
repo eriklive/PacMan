@@ -1,16 +1,18 @@
 package buttons;
-import javax.swing.JButton;
 import java.awt.event.*;
 import assets.GameSettings;
 import telas.Game;
 
-public class ChooseMapButton extends JButton{
+public class ChooseMapButton extends Button{
+	int mapa;
+	
 	public ChooseMapButton(String texto, int mapa){
-		setText(texto);
-		addActionListener( actionListener(mapa) );
+		super(texto);
+		this.mapa = mapa;
 	}
 
-	private ActionListener actionListener(int mapa){
+	@Override
+	public ActionListener actionListener(){
 		return new ActionListener() {
 	      	@Override
 	      	public void actionPerformed(ActionEvent e) {
