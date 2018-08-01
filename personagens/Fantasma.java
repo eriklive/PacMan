@@ -1,5 +1,4 @@
 package personagens;
-import assets.Random;
 import assets.GameSettings;
 
 public class Fantasma extends Personagem{

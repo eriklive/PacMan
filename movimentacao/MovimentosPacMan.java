@@ -2,8 +2,6 @@ package movimentacao;
 import personagens.*;
 import telas.*;
 import assets.GameSettings;
-import assets.FindValue;
-import assets.Flags;
 
 public class MovimentosPacMan {
 	private static void perdeu(int x, int y){

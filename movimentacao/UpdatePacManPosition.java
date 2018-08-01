@@ -1,7 +1,5 @@
 package movimentacao;
 import personagens.PacMan;
-import assets.Random;
-
 
 public abstract class UpdatePacManPosition {
 	private static int cont = 0;
